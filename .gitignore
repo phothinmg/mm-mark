@@ -1,0 +1,6 @@
+node_modules
+package-lock.json
+.npmignore
+a.json
+hero.md
+dist
