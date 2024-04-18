@@ -2,16 +2,31 @@
 
 ![md-html](https://miro.medium.com/v2/resize:fit:1400/1*eZ7YPTqzcyFVoQxIOIQ9kQ.png)
 
+---
 ### About
 
 Markdown to HTML converter using [Showdown](https://github.com/showdownjs/showdown), **ESM Only** .
 
+Syntax Highlight with [Prism.js](https://prismjs.com/).
+
+MathML , LaTeX are support with [MathJax](https://www.mathjax.org/).
+
+---
+
 ### Install
 
 ```bash
-npm i ptm-converter
+npm i mm-mark
 ```
 
+```bash
+yarn add mm-mark
+```
+
+```bash
+pnpm i mm-mark
+```
+---
 ### Usage
 
 `example.md`
@@ -38,7 +53,7 @@ Object : return metadata of markdown file.
 
 ```javascript
 
-import Converter from "ptm-converter";
+import Converter from "mm-mark";
 
 const mdContent = new Converter('./example.md');
 
@@ -62,7 +77,7 @@ console.log(dat);
 
 ```javascript
 
-import Converter from "ptm-converter";
+import Converter from "mm-mark";
 
 const mdContent = new Converter('./example.md');
 
@@ -134,6 +149,7 @@ console.log(lastUpdate);
 
 ```
 ---
+
 
 ### Bundled license information:
 
