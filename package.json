@@ -1,6 +1,6 @@
 {
   "name": "mm-mark",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Markdown to Html Converter",
   "scripts": {
     "build": "tsup"
