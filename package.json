@@ -23,6 +23,7 @@
     "@changesets/cli": "^2.27.1",
     "@types/node": "^20.10.5",
     "@types/showdown": "^2.0.6",
+    "jsr": "^0.12.2",
     "ptm-frontmatter": "^1.0.1",
     "showdown": "^2.1.0",
     "tsup": "^8.0.2",
