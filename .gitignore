@@ -2,5 +2,9 @@ node_modules
 package-lock.json
 .npmignore
 aa.js
+bb.js
+cc.js
 hero.md
 dist
+ind.html
+index.html

@@ -150,6 +150,10 @@ console.log(lastUpdate);
 ```
 ---
 
+$$ \begin{matrix}
+   a & b \\
+   c & d
+\end{matrix} $$
 
 ### Bundled license information:
 
