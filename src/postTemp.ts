@@ -1,4 +1,4 @@
-type props = {
+export type Temprops = {
   postContent: string;
   postTitle: string;
   postDate: string;
@@ -11,7 +11,7 @@ const htmlTemplate = ({
   postDate,
   readingTime,
   lastUpdate,
-}: props) => {
+}: Temprops): string => {
   const pc = postContent === undefined ? console.error("Error") : postContent;
   const tt = postTitle === undefined ? "" : postTitle;
   const dat = postDate === undefined ? "" : postDate;

@@ -10,7 +10,12 @@ class Converter {
   constructor(filePath: string) {
     this.filePath = filePath;
   }
-  formatDate(date: string) {
+  /**
+   * Formats a given date string into a specific format.
+   * @param date - The date string to be formatted.
+   * @returns The formatted date string in the format "Weekday, Day Month Year". For example, "Sat, 01 Jan 2022".
+   */
+  formatDate(date: string): string {
     return new Date(date).toLocaleString("en-US", {
       weekday: "short",
       day: "numeric",
@@ -18,11 +23,13 @@ class Converter {
       year: "numeric",
     });
   }
+  
   readTime(text: string) {
     const wpm = 225;
     const words = text.trim().split(/\s+/).length;
     return Math.ceil(words / wpm);
   }
+
   lastUpdate() {
     const stats = fs.statSync(this.filePath);
     const lastModifiedTime = stats.mtime.toISOString();
@@ -80,6 +87,7 @@ class Converter {
   get convertedContent() {
     return this.convert().makeHtml(this.content);
   }
+
   get postHtml() {
     return htmlTemplate({
       postContent: this.convertedContent,
