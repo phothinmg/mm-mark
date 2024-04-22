@@ -1,6 +1,6 @@
 import frontmatter from "ptm-frontmatter";
 import showdown from "showdown";
-import fs from "fs";
+import fs from "node:fs";
 import htmlTemplate from "./postTemp.js";
 import ShowdownMathjax from "showdown-mathjax";
 import showdownPrism from "showdown-prism";

@@ -1,0 +1,13 @@
+{
+    "name": "@ptm/mm-mark",
+    "version": "0.2.0",
+    "exports": "./src/index.ts",
+    "publish": {
+        "include": [
+          "LICENSE",
+          "README.md",
+          "jsr.json",
+          "src/**/*.ts"
+        ]
+      }
+  }
