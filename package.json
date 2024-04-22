@@ -6,8 +6,8 @@
     "build": "tsup"
   },
   "main": "dist/index.js",
-  "types": "./dist/index.d.ts",
-  "type": "module",
+  "module": "dist/index.mjs",
+  "types": "./dist/index.d.mts",
   "author": "Pho Thin Maung",
   "license": "Apache-2.0",
   "keywords": [
@@ -23,15 +23,13 @@
     "@changesets/cli": "^2.27.1",
     "@types/node": "^20.10.5",
     "@types/showdown": "^2.0.6",
-    "prismjs": "^1.29.0",
     "ptm-frontmatter": "^1.0.1",
     "showdown": "^2.1.0",
-    "showdown-highlight": "^3.1.0",
     "tsup": "^8.0.2",
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "showdown-mathjax": "^1.0.2",
+    "showdown-mathjax": "^1.0.3",
     "showdown-prism": "^0.2.0"
   }
 }

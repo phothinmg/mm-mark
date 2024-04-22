@@ -7,10 +7,6 @@
 
 Markdown to HTML converter using [Showdown](https://github.com/showdownjs/showdown), **ESM Only** .
 
-Syntax Highlight with [Prism.js](https://prismjs.com/).
-
-MathML , LaTeX are support with [MathJax](https://www.mathjax.org/).
-
 ---
 
 ### Install
@@ -150,10 +146,6 @@ console.log(lastUpdate);
 ```
 ---
 
-$$ \begin{matrix}
-   a & b \\
-   c & d
-\end{matrix} $$
 
 ### Bundled license information:
 
