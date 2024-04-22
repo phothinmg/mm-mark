@@ -11,5 +11,5 @@ export default defineConfig({
   bundle: true,
   treeshake: true,
   minify: true,
-  external: ['fs'],
+  external: ['fs','showdown-mathjax','showdown-prism'],
 });

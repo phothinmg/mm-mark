@@ -29,5 +29,9 @@
     "showdown-highlight": "^3.1.0",
     "tsup": "^8.0.2",
     "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "showdown-mathjax": "^1.0.2",
+    "showdown-prism": "^0.2.0"
   }
 }

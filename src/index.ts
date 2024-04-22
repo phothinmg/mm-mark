@@ -2,9 +2,8 @@ import frontmatter from "ptm-frontmatter";
 import showdown from "showdown";
 import fs from "fs";
 import htmlTemplate from "./postTemp.js";
-import mathjax from "./mathjax.js";
-import showdownHighlight from "showdown-highlight";
-import { style, script } from "./style.js";
+import ShowdownMathjax from "showdown-mathjax";
+import showdownPrism from "showdown-prism";
 
 class Converter {
   filePath: string;
@@ -44,13 +43,10 @@ class Converter {
       openLinksInNewWindow: true,
       emoji: true,
       moreStyling: true,
-      extensions: [showdownHighlight],
+      extensions: [ShowdownMathjax, showdownPrism],
     });
 
     converter.setFlavor("github");
-    converter.addExtension(mathjax);
-    converter.addExtension(style);
-    converter.addExtension(script);
     return converter;
   }
 
@@ -97,18 +93,6 @@ class Converter {
   get pageHtml() {
     return htmlTemplate({
       postContent: this.convertedContent,
-      postTitle: "",
-      postDate: "",
-      readingTime: "",
-      lastUpdate: "",
-    });
-  }
-
-  get html() {
-    const fc: any = fs.readFileSync(this.filePath);
-    const fcc = this.convert().makeHtml(fc);
-    return htmlTemplate({
-      postContent: fcc,
       postTitle: "",
       postDate: "",
       readingTime: "",
