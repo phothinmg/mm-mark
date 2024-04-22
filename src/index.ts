@@ -23,14 +23,14 @@ class Converter {
       year: "numeric",
     });
   }
-  
-  readTime(text: string) {
+
+  readTime(text: string): number {
     const wpm = 225;
     const words = text.trim().split(/\s+/).length;
     return Math.ceil(words / wpm);
   }
 
-  lastUpdate() {
+  lastUpdate(): string {
     const stats = fs.statSync(this.filePath);
     const lastModifiedTime = stats.mtime.toISOString();
     return lastModifiedTime;
@@ -57,38 +57,38 @@ class Converter {
     return converter;
   }
 
-  filecontent() {
+  filecontent(): any {
     return frontmatter(this.filePath);
   }
 
-  get data() {
-    return this.filecontent().data;
+  get data(): any {
+    return frontmatter(this.filePath).data;
   }
-  get content() {
-    return this.filecontent().content;
+  get content(): any {
+    return frontmatter(this.filePath).content;
   }
-  get postTitle() {
+  get postTitle(): any {
     return this.data.title;
   }
-  get postDate() {
+  get postDate(): any {
     return this.formatDate(this.data.date);
   }
-  get lastUpdatedDate() {
+  get lastUpdatedDate(): string {
     const a = this.formatDate(this.lastUpdate());
     return `<small>Last Update : ${a}</small>`;
   }
-  get readingTime() {
+  get readingTime(): string {
     const a = this.readTime(this.content);
     return `<small>Reading Time : ${a} minutes</small>`;
   }
-  get json() {
+  get json(): string {
     return JSON.stringify(this.filecontent());
   }
-  get convertedContent() {
+  get convertedContent(): string {
     return this.convert().makeHtml(this.content);
   }
 
-  get postHtml() {
+  get postHtml(): string {
     return htmlTemplate({
       postContent: this.convertedContent,
       postTitle: this.postTitle,
@@ -98,7 +98,7 @@ class Converter {
     });
   }
 
-  get pageHtml() {
+  get pageHtml(): string {
     return htmlTemplate({
       postContent: this.convertedContent,
       postTitle: "",
