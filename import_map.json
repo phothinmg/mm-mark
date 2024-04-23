@@ -1,6 +1,7 @@
 {
   "imports": {
     "showdown-mathjax": "npm:showdown-mathjax@^1.0.3",
-    "showdown-prism": "npm:showdown-prism@^0.2.0"
+    "showdown-prism": "npm:showdown-prism@^0.2.0",
+    "js-yaml": "npm:js-yaml@^4.1.0"
   }
 }

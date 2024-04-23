@@ -1,22 +1,21 @@
-import frontmatter from "ptm-frontmatter";
 import showdown from "showdown";
 import fs from "node:fs";
 import htmlTemplate from "./postTemp.js";
 import ShowdownMathjax from "showdown-mathjax";
 import showdownPrism from "showdown-prism";
-
+import frontmatter from "./frontmatter.js";
 /**
  * Convert markdown file to HTML content.
  * ----------
- * 
+ *
  * ***Base on Showndown JS and TeX,  LaTeX,  MathMl, Prism JS are support.***
- * 
+ *
  * @example
  * const converter = new Converter(_PATH_TO_MARKDOWN_FILE);
- * 
- * 
- * 
- * @return 
+ *
+ *
+ *
+ * @return
  * - json : {data: *frontmatter*, content: markdown content(before convert)}
  * - data : frontmatter , default  date and title
  * - content :  markdown content(before convert)
@@ -25,11 +24,11 @@ import showdownPrism from "showdown-prism";
  * - lastUpdatedDate : Last updated date of content
  * - readingTime : Reading time of content
  * - convertedContent : Converted content.
- * - postHtml : HTML with convertedContent , postTitle , 
- *              postDate , lastUpdatedDate , readingTime 
+ * - postHtml : HTML with convertedContent , postTitle ,
+ *              postDate , lastUpdatedDate , readingTime
  *              (for blog post)
  * - pageHtml : HTML with only convertedContent for page
- * 
+ *
  */
 class Converter {
   filePath: string;
