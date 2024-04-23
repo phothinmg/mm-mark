@@ -5,6 +5,17 @@ export type Temprops = {
   readingTime: string;
   lastUpdate: string;
 };
+/**
+ * Generates an HTML template with the provided post content, title, date, reading time, and last update.
+ *
+ * @param {Temprops} props - An object containing the post content, title, date, reading time, and last update.
+ * @param {string} props.postContent - The content of the post.
+ * @param {string} props.postTitle - The title of the post.
+ * @param {string} props.postDate - The date of the post.
+ * @param {string} props.readingTime - The reading time of the post.
+ * @param {string} props.lastUpdate - The last update date of the post.
+ * @return {string} The generated HTML template.
+ */
 const htmlTemplate = ({
   postContent,
   postTitle,
