@@ -74,9 +74,6 @@ const frontmatter = (filePhat: string): any => {
  *
  * @example
  * const converter = new converter(filePath: string, options: {}, extensions: []);
- *  //filePath - The path of the file to be converted.
- *  //options - Showdown Options
- *  //extensions - Showdown Extensions
  *
  *
  * @return

@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      jsr:
+        specifier: ^0.12.2
+        version: 0.12.2
     devDependencies:
       '@changesets/cli':
         specifier: ^2.27.1
@@ -26,9 +30,6 @@ importers:
       js-yaml:
         specifier: ^4.1.0
         version: 4.1.0
-      jsr:
-        specifier: ^0.12.2
-        version: 0.12.2
       rollup-plugin-polyfill-node:
         specifier: ^0.13.0
         version: 0.13.0(rollup@4.14.3)

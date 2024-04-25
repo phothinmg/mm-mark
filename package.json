@@ -27,10 +27,12 @@
     "@types/showdown": "^2.0.6",
     "esbuild-plugin-polyfill-node": "^0.3.0",
     "js-yaml": "^4.1.0",
-    "jsr": "^0.12.2",
     "rollup-plugin-polyfill-node": "^0.13.0",
     "showdown": "^2.1.0",
     "tsup": "^8.0.2",
     "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "jsr": "^0.12.2"
   }
 }
