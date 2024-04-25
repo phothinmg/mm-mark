@@ -5,11 +5,17 @@
 ---
 ### About
 
-Markdown to HTML converter using [Showdown](https://github.com/showdownjs/showdown), **ESM Only** .
+Markdown to HTML converter using [Showdown](https://github.com/showdownjs/showdown).
 
 ---
 
-### Install
+### Install 
+
+#### NPM
+
+https://www.npmjs.com/package/mm-mark
+
+**Node.Js**
 
 ```bash
 npm i mm-mark
@@ -22,6 +28,33 @@ yarn add mm-mark
 ```bash
 pnpm i mm-mark
 ```
+#### [JSR](https://jsr.io/)
+
+[![JSR](https://jsr.io/badges/@ptm/mm-mark)](https://jsr.io/@ptm/mm-mark) [![JSR Score](https://jsr.io/badges/@ptm/mm-mark/score)](https://jsr.io/@ptm/mm-mark)
+
+https://jsr.io/@ptm/mm-mark
+
+**Deno**
+
+```bash
+deno add @ptm/mm-mark
+```
+
+```js
+import * as mod from "@ptm/mm-mark";
+```
+**Bun**
+
+```bash
+bunx jsr add @ptm/mm-mark
+```
+
+```js
+import * as mod from "@ptm/mm-mark";
+```
+
+Available at https://www.webjars.org/, but just experimental.
+
 ---
 ### Usage
 
