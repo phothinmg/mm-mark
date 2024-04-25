@@ -180,13 +180,7 @@ console.log(lastUpdate);
 ---
 
 
-### Bundled license information:
 
-**1. js-yaml 4.1.0 https://github.com/nodeca/js-yaml @license MIT**
-
-**2. showdown/dist/showdown.js: showdown v 2.1.0 - 21-04-2022**
-
-**3. he/he.js:https://mths.be/he v1.2.0 by @mathias | MIT license**
 
 
 
