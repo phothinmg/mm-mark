@@ -1,7 +1,7 @@
 {
     "name": "@ptm/mm-mark",
     "version": "0.2.2",
-    "exports":"./src/mod.ts",
+    "exports":"./src/index.ts",
     "publish": {
         "include": [
           "LICENSE",
