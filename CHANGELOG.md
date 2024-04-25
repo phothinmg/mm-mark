@@ -1,5 +1,11 @@
 # mm-mark
 
+## 0.2.2
+
+### Patch Changes
+
+- test plugin
+
 ## 0.2.1
 
 ### Patch Changes
