@@ -1,13 +1,12 @@
 {
     "name": "@ptm/mm-mark",
     "version": "0.2.2",
-    "exports":{
-      ".": "./src/mod.ts"
-    },
+    "exports":"./src/mod.ts",
     "publish": {
         "include": [
           "LICENSE",
           "README.md",
+          "import_map.json",
           "jsr.json",
           "src/**/*.ts"
         ]
