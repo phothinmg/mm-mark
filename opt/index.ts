@@ -87,35 +87,10 @@ const frontmatter = (filePhat: string): any => {
  * - markdownContent : Markdown content.
  */
 export class converter {
-  private filePath: string;
-  private options: {};
-  private defaultOptions: {};
-  private extensions: [];
-  private defaultExtensions: [];
-  private opts: {};
-  private exts: [];
-  /**
-   * Creates an instance of the Converter class.
-   *
-   * @param {string} filePath - The path of the file to be converted.
-   * @param {object} options - Showdown Options
-   * @param extensions - Showdown Extensions
-   */
-  constructor(filePath: string, options: {}, extensions: []) {
+  filePath: string;
+  
+  constructor(filePath: string) {
     this.filePath = filePath;
-    this.extensions = extensions;
-    this.options = options;
-    this.defaultOptions = {
-      tables: true,
-      emoji: true,
-    };
-    this.defaultExtensions = [];
-    this.exts = [...this.extensions, ...this.defaultExtensions];
-    this.opts = {
-      ...this.options,
-      ...this.defaultOptions,
-      extensions: this.exts,
-    };
   }
 
   /**
@@ -123,7 +98,10 @@ export class converter {
    * @returns {showdown.Converter} The initialized converter object.
    */
   private convert(): showdown.Converter {
-    const converter = new showdown.Converter(this.opts);
+    const converter = new showdown.Converter({
+      tables: true,
+      emoji: true,
+    });
 
     converter.setFlavor("github");
     return converter;

@@ -1,14 +1,13 @@
 {
   "name": "mm-mark",
   "version": "0.2.2",
-  "description": "Markdown to Html Converter",
+  "description": "Markdown and Html Converter",
   "scripts": {
     "build": "tsup"
   },
+  "type": "module",
   "main": "dist/index.js",
-  "module": "dist/esm/index.js",
-  "types": "./dist/index.d.mts",
-  "jsdelivr": "./dist/iife/index.js",
+  "types": "./dist/index.d.ts",
   "author": "Pho Thin Maung",
   "license": "Apache-2.0",
   "keywords": [
@@ -33,6 +32,9 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "jsr": "^0.12.2"
+    "jsr": "^0.12.2",
+    "showdown-mathjax": "^1.0.3",
+    "showdown-prism": "^0.2.0",
+    "showmark-toc": "^0.1.0"
   }
 }

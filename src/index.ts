@@ -1,179 +1,146 @@
-import showdown from "showdown";
-import { load } from "js-yaml";
-import fs from "node:fs";
-
+import Showdown, { ShowdownOptions } from "showdown";
+import { findMetaIndices, getData, getContent } from "./frontmatter";
+import { htmlTemplate } from "./template";
+import showdownMathjax from "showdown-mathjax";
+import showdownPrism from "showdown-prism";
+import { showmarkToc } from "showmark-toc";
 /**
- * Finds the indices of the metadata in an array of items.
+ * Class representing a Markdown converter.
  *
- * @param {any[]} mem - The array to store the indices of the metadata.
- * @param {any} item - The current item being processed.
- * @param {number} i - The index of the current item.
- * @return {any[]} The array of indices of the metadata.
+ * @class Markdown
  */
-const findMetaIndices = (mem: any, item: any, i: any): any => {
-  if (/^---/.test(item)) {
-    mem.push(i);
-  }
-
-  return mem;
-};
-const emptyObject = {};
-export type DataPros = {
-  lines: any;
-  metaIndices: any;
-};
-/**
- * Retrieves data based on the meta indices from the lines.
- *
- * @param {DataPros} lines - The lines containing the data.
- * @param {DataPros} metaIndices - The indices indicating the metadata.
- * @return {any} The retrieved data or an empty object.
- */
-const getData = ({ lines, metaIndices }: DataPros): any => {
-  if (metaIndices.length > 0) {
-    const data = lines.slice(metaIndices[0] + 1, metaIndices[1]);
-    return load(data.join("\n"));
-  }
-
-  return emptyObject;
-};
-
-/**
- * Returns the content of the file after removing the metadata.
- *
- * @param {DataPros} lines - The lines of the file.
- * @param {DataPros} metaIndices - The indices of the metadata in the file.
- * @return {any} The content of the file after removing the metadata.
- */
-const getContent = ({ lines, metaIndices }: DataPros): any => {
-  if (metaIndices.length > 0) {
-    lines = lines.slice(metaIndices[1] + 1, lines.length);
-  }
-  return lines.join("\n");
-};
-/**
- * Reads the contents of a file and extracts the frontmatter data and content.
- *
- * @param {string} filePhat - The path to the file.
- * @return {Object} An object containing the frontmatter data and content.
- */
-const frontmatter = (filePhat: string): any => {
-  const contents = fs.readFileSync(filePhat, "utf-8");
-  const lines = contents.split("\n");
-  const metaIndices = lines.reduce(findMetaIndices, []);
-  const data = getData({ lines, metaIndices });
-  const content = getContent({ lines, metaIndices });
-
-  return { data, content };
-};
-/**
- * Convert markdown and HTML .
- * ----------
- *
- * ***Base on Showndown***
- *
- * @example
- * const converter = new converter(filePath: string, options: {}, extensions: []);
- *
- *
- * @return
- * - json : {data: *frontmatter*, content: markdown content(before convert)}
- * - data : frontmatter , default  date and title
- * - content :  markdown content(before convert)
- * - convertedContent : Converted content.
- * - markdownContent : Markdown content.
- */
-export class converter {
-  private filePath: string;
-  private options: {};
-  private defaultOptions: {};
-  private extensions: [];
-  private defaultExtensions: [];
-  private opts: {};
-  private exts: [];
+class Markdown {
   /**
-   * Creates an instance of the Converter class.
+   * Formats a date string into a localized date format.
    *
-   * @param {string} filePath - The path of the file to be converted.
-   * @param {object} options - Showdown Options
-   * @param extensions - Showdown Extensions
+   * @param date - The date string to be formatted.
+   * @returns The formatted date string.
    */
-  constructor(filePath: string, options: {}, extensions: []) {
-    this.filePath = filePath;
-    this.extensions = extensions;
-    this.options = options;
-    this.defaultOptions = {
+  formatDate(date: any): string {
+    return new Date(date).toLocaleString("en-US", {
+      weekday: "short",
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+    });
+  }
+  /**
+   * Calculates the estimated reading time for a given text.
+   *
+   * @param text - The text to calculate the reading time for.
+   * @returns The estimated reading time in minutes.
+   */
+  readTime(text: string): number {
+    const wpm = 225;
+    const words = text.trim().split(/\s+/).length;
+    return Math.ceil(words / wpm);
+  }
+  /**
+   * Retrieves the frontmatter data and content from a file.
+   *
+   * @param contents - Markdown contents.
+   * @returns An object containing the frontmatter data and content.
+   *          - data: A record of key-value pairs representing the frontmatter data.
+   *          - content: The content of the file.
+   */
+  frontmatter(contents: string): {
+    data: Record<string, unknown>;
+    content: string;
+  } {
+    const lines = contents.split("\n");
+    const metaIndices = lines.reduce(findMetaIndices, []);
+    const data = getData({ lines, metaIndices });
+    const content = getContent({ lines, metaIndices });
+
+    return { data, content };
+  }
+  /**
+   * Creates a new instance of the Showdown converter with the specified options.
+   *
+   * @param options - The options to configure the converter.
+   * @returns A new instance of the Showdown converter.
+   */
+  /**
+   * Creates a new instance of the Showdown converter with the specified options.
+   *
+   * @param options - The options to configure the converter.
+   * @returns A new instance of the Showdown converter.
+   */
+  converter(options?: ShowdownOptions): Showdown.Converter {
+    return new Showdown.Converter(options);
+  }
+  /**
+   * Converts a markdown file to HTML and returns various data related to the file.
+   *
+   * @param contents - Markdown Contents.
+   * @returns An object containing the following properties:
+   *          - data: A record of key-value pairs representing the frontmatter data.
+   *          - json: The frontmatter data and content in JSON string format.
+   *          - convertedHtml: The converted HTML content of the markdown file.
+   *          - postHtml: The HTML template for displaying the converted markdown content with additional information such as post title, date, reading time, and last update.
+   *          - pageHtml: The HTML template for displaying the converted markdown content without additional information.
+   */
+  markToHtml(contents: string): object {
+    const con = this.frontmatter(contents);
+    const data = con.data;
+    const content = con.content;
+    const json = JSON.stringify(con, null, 2);
+    const convert = this.converter({
+      parseImgDimensions: true,
+      simplifiedAutoLink: true,
+      strikethrough: true,
       tables: true,
+      tasklists: true,
+      openLinksInNewWindow: true,
       emoji: true,
-    };
-    this.defaultExtensions = [];
-    this.exts = [...this.extensions, ...this.defaultExtensions];
-    this.opts = {
-      ...this.options,
-      ...this.defaultOptions,
-      extensions: this.exts,
-    };
-  }
-
-  /**
-   * Initializes and configures a showdown.Converter object with specific options and flavor.
-   * @returns {showdown.Converter} The initialized converter object.
-   */
-  private convert(): showdown.Converter {
-    const converter = new showdown.Converter(this.opts);
-
-    converter.setFlavor("github");
-    return converter;
-  }
-
-  /**
-   * Retrieves the content of the file using frontmatter.
-   *
-   * @return {any} The frontmatter content of the file.
-   */
-  private filecontent(): any {
-    try {
-      return frontmatter(this.filePath);
-    } catch (error) {
-      console.error("Error reading or parsing file:", error);
-      return null; // Or handle error as appropriate
+      moreStyling: true,
+      extensions: [showdownMathjax, showdownPrism, showmarkToc],
+    });
+    convert.setFlavor("github");
+    const convertedHtml = convert.makeHtml(content);
+    let postTitle: {};
+    if (data.title) {
+      postTitle = data.title;
+    } else {
+      postTitle = "";
     }
+    let postDate;
+    if (data.date) {
+      postDate = this.formatDate(data.date);
+    } else {
+      postDate = "";
+    }
+    const readingTime = /* html */ `<small>Reading Time : ${this.readTime(
+      content
+    )} minutes</small>`;
+    const postHtml = htmlTemplate({
+      postContent: convertedHtml,
+      postTitle: postTitle,
+      postDate: postDate,
+      readingTime: readingTime,
+    });
+    const pageHtml = htmlTemplate({
+      postContent: convertedHtml,
+    });
+    return {
+      data,
+      json,
+      convertedHtml,
+      postHtml,
+      pageHtml,
+    };
   }
+}
 
-  /**
-   * Retrieves the data from the frontmatter of the file at the specified file path.
-   *
-   * @return {any} The data retrieved from the frontmatter of the file.
-   */
-  get data(): any {
-    return this.filecontent().data;
-  }
-  /**
-   * Retrieves the content from the frontmatter of the file at the specified file path.
-   *
-   * @return {any} The content retrieved from the frontmatter of the file.
-   */
-  get content(): any {
-    return this.filecontent().content;
-  }
-  /**
-   * Retrieves the post title from the data object.
-   *
-   * @return {any} The post title.
-   */
 
-  get json(): string {
-    return JSON.stringify(this.filecontent());
-  }
-  /**
-   * Returns the converted content of the object as a string.
-   *
-   * @return {string} The converted content as a string.
-   */
-  get convertedContent(): string {
-    return this.convert().makeHtml(this.content);
-  }
-  get markdownContent(): string {
-    return this.convert().makeMarkdown(this.content);
-  }
+
+
+
+/**
+ * Creates a new instance of the Markdown converter.
+ *
+ * @returns A new instance of the Markdown converter.
+ */
+export function mmMark(): Markdown {
+  return new Markdown();
 }
