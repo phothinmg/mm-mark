@@ -79,13 +79,13 @@ import { mmMark } from "mm-mark";
    const HTML = mmMark.markToHtml(/*Markdown Content*/);
    ```
 
-| Outputs       | Description                                           |
-| ------------- | ----------------------------------------------------- |
-| data          | frontmatter                                           |
-| json          | {data: , content: }                                   |
-| convertedHtml | converted whole document                              |
-| postHtml      | Formated HTML , post title , post date , reading time |
-| pageHtml      | Only formated contents.                               |
+    | Outputs       | Description                                           |
+    | ------------- | ----------------------------------------------------- |
+    | data          | frontmatter                                           |
+    | json          | {data: , content: }                                   |
+    | convertedHtml | converted whole document                              |
+    | postHtml      | Formated HTML , post title , post date , reading time |
+    | pageHtml      | Only formated contents.                               |
 
 
 ---
