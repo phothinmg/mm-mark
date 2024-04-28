@@ -1,5 +1,11 @@
 # mm-mark
 
+## 0.2.3
+
+### Patch Changes
+
+- remove fs module
+
 ## 0.2.2
 
 ### Patch Changes
