@@ -89,3 +89,14 @@ import { mmMark } from "mm-mark";
 
 
 ---
+
+###  Bundled license information
+
+showdown/dist/showdown.js:
+  (*! showdown v 2.1.0 - 21-04-2022 *)
+
+js-yaml/dist/js-yaml.mjs:
+  (*! js-yaml 4.1.0 https://github.com/nodeca/js-yaml @license MIT *)
+*/
+
+---
