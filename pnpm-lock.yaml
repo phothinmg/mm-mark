@@ -11,15 +11,6 @@ importers:
       jsr:
         specifier: ^0.12.2
         version: 0.12.2
-      showdown-mathjax:
-        specifier: ^1.0.3
-        version: 1.0.3
-      showdown-prism:
-        specifier: ^0.2.0
-        version: 0.2.0
-      showmark-toc:
-        specifier: ^0.1.0
-        version: 0.1.0
     devDependencies:
       '@changesets/cli':
         specifier: ^2.27.1
@@ -45,6 +36,15 @@ importers:
       showdown:
         specifier: ^2.1.0
         version: 2.1.0
+      showdown-mathjax:
+        specifier: ^1.0.3
+        version: 1.0.3
+      showdown-prism:
+        specifier: ^0.2.0
+        version: 0.2.0
+      showmark-toc:
+        specifier: ^0.1.0
+        version: 0.1.0
       tsup:
         specifier: ^8.0.2
         version: 8.0.2(ts-node@10.9.2(@types/node@20.12.7)(typescript@5.4.5))(typescript@5.4.5)
