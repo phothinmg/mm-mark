@@ -3,13 +3,13 @@ import { polyfillNode } from "esbuild-plugin-polyfill-node";
 
 export default defineConfig({
   entry: ["./src/index.ts"],
-  outDir: "./dist",
-  splitting: true,
-  sourcemap: true,
-  dts: true,
-  format: "esm",
+  outDir: "./out",
+  // splitting: true,
+  // sourcemap: true,
+  // dts: true,
+  format: "iife",
   bundle: true,
   treeshake: true,
-  minify: true,
-  keepNames: true,
+  globalName: "repackMd",
+  // minify: true,
 });

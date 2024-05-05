@@ -17,5 +17,5 @@
     "resolveJsonModule": true
   },
   "exclude": ["node_modules/**/*", "dist/**/*","lib/**/*"],
-  "include": ["src/**/*","opt/**/*"]
+  "include": ["src/**/*"]
 }

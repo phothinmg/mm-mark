@@ -22,19 +22,17 @@
   "devDependencies": {
     "@changesets/cli": "^2.27.1",
     "@types/js-yaml": "^4.0.9",
-    "@types/node": "^20.10.5",
+    "@types/node": "^20.12.8",
     "@types/showdown": "^2.0.6",
     "esbuild-plugin-polyfill-node": "^0.3.0",
     "js-yaml": "^4.1.0",
-    "rollup-plugin-polyfill-node": "^0.13.0",
     "showdown": "^2.1.0",
     "tsup": "^8.0.2",
-    "typescript": "^5.3.3"
+    "typescript": "^5.4.5"
   },
   "dependencies": {
-    "jsr": "^0.12.2",
+    "jsr": "^0.12.4",
     "showdown-mathjax": "^1.0.3",
-    "showdown-prism": "^0.2.0",
-    "showmark-toc": "^0.1.0"
+    "showdown-prism": "^0.2.3"
   }
 }
