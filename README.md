@@ -60,11 +60,53 @@ pnpm i mm-mark
 
 ---
 
-## Documentations
+[![JSR](https://jsr.io/badges/@ptm/mm-mark)](https://jsr.io/@ptm/mm-mark)
 
-```javascript
-import Mmmark from "mm-mark";
+### Install from jsr.io
+
+deno
+
+```bash
+deno add @ptm/mm-mark
 ```
+
+npm
+
+```bash
+npx jsr add @ptm/mm-mark
+```
+
+yarn
+
+```bash
+yarn dlx jsr add @ptm/mm-mark
+```
+
+pnpm
+
+```bash
+pnpm dlx jsr add @ptm/mm-mark
+```
+
+bun
+
+```bash
+bunx jsr add @ptm/mm-mark
+```
+
+**Import**
+
+```ts
+import * as mod from "@ptm/mm-mark";
+```
+
+---
+
+
+
+
+
+## Documentations
 
 ### 1. Mmmark.renderHtml
 
@@ -78,7 +120,7 @@ Renders the given text as HTML using the Showdown library.
 
 ##### 1.2.2 RenderOptions
 
-###### 1.2.2.1 string | oiptional | default - "vs"
+###### 1.2.2.1 theme: string | oiptional | default - "vs"
 
 Name of Prism.js themes for code block highlight.
 
@@ -200,7 +242,7 @@ Generates data and content from the markdown file.
 
 ##### 2.3.2 content: string | Raw markdown content.
 
-#### 2.3 Example
+#### 2.4 Example
 
 `example.md`
 

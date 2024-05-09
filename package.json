@@ -1,6 +1,6 @@
 {
   "name": "mm-mark",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Markdown and Html Converter",
   "scripts": {
     "build": "tsup"
@@ -20,6 +20,7 @@
     "url": "git+https://github.com/phothinmg/mm-mark.git"
   },
   "devDependencies": {
+    "@asciidoctor/core": "^3.0.4",
     "@changesets/cli": "^2.27.1",
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^20.12.10",
@@ -33,6 +34,7 @@
     "typescript": "^5.4.5"
   },
   "dependencies": {
+    "asciidoctor": "^3.0.4",
     "jsr": "^0.12.4",
     "showdown-mathjax": "^1.0.4",
     "showdown-prism": "^1.0.5"
