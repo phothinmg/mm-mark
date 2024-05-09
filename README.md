@@ -1,4 +1,4 @@
-## Markdown <===> HTML Converter
+# mm-mark
 
 **_ESM Only_**
 
@@ -6,13 +6,45 @@
 
 ---
 
-### About
+## Convert Markdown to HTML
 
-Markdown to HTML converter using [Showdown](https://github.com/showdownjs/showdown).
+Mmmark : Convert Md to Html with my own Prism.js code highlight and Mathjax extenstions of Showdown.Js.
+
+> [!NOTE]
+> This package focus on convert markdown to html . If you want more, recommended to use [Showdown.js](https://github.com/showdownjs/showdown)
 
 ---
 
-### Install
+## Main dependencies bundled license information.
+
+### 1. Showdown.js
+
+Showdown.js is a powerful JavaScript library used for converting Markdown into HTML. It's a key dependency in our project, providing the core functionality of our Markdown to HTML conversion.
+
+- Version: 2.1.0
+- Release Date: 21-04-2022
+- [Showdown.js GitHub](https://github.com/showdownjs/showdown)
+- License: MIT
+
+### 2. JS-YAML
+
+JS-YAML is a JavaScript implementation of YAML, a human-friendly data serialization standard. In our project, it's used for parsing YAML front matter in Markdown files.
+
+- Version: 4.1.0
+- [JS-YAML GitHub](https://github.com/nodeca/js-yaml)
+- License: MIT
+
+### 3. Other dependencies
+
+- Prism.Js for code block highlight.
+- Mathjax for math support.
+- tsup for typescript compile and bundle.
+
+---
+
+[![npm version](https://badge.fury.io/js/mm-mark.svg)](https://badge.fury.io/js/mm-mark)
+
+### Install from npm
 
 ```bash
 npm i mm-mark
@@ -28,75 +60,167 @@ pnpm i mm-mark
 
 ---
 
-### USAGE
+## Documentations
 
 ```javascript
-import { mmMark } from "mm-mark";
+import Mmmark from "mm-mark";
 ```
 
-**_APIs_**
+### 1. Mmmark.renderHtml
 
-1. **Frontmatter**
+#### 1.1 Descriptions
 
-   - frontmatter.data ----> metadata from markdown document.
+Renders the given text as HTML using the Showdown library.
 
-   - frontmatter.content ----> content from markdown document.
+#### 1.2 Options
 
-     ```markdown
-     ---
-     title: Your post title
-     date: 2020-07-22
-     ---
+##### 1.2.1 text: string | Markdown Contents.
 
-     # Hello
+##### 1.2.2 RenderOptions
 
-     Hello World.
-     ```
+###### 1.2.2.1 string | oiptional | default - "vs"
 
-     ```javascript
-     const mark = mmMark.frontmatter(/*Markdown Content*/);
-     console.log(mark.data);
-     console.log(mark.content);
-     ```
+Name of Prism.js themes for code block highlight.
 
-2. **Converter**
+| Available Themes      |
+| --------------------- |
+| `actom-dark`          |
+| `cb`                  |
+| `coldark-dark`        |
+| `dark`                |
+| `holi-theme`          |
+| `duotone-earth`       |
+| `duotone-forest`      |
+| `duotone-light`       |
+| `duotone-sea`         |
+| `duotone-space`       |
+| `funky`               |
+| `ghcolors`            |
+| `gruvbox-light`       |
+| `laserwave`           |
+| `lucario`             |
+| `night-owl`           |
+| `okaidia`             |
+| `one-dark`            |
+| `one-light`           |
+| `solarized-dark-atom` |
+| `synthwave84`         |
+| `tomorrow`            |
+| `twilight`            |
+| `vs`                  |
+| `vsc-dark-plus`       |
+| `z-touch`             |
 
-   - Showdown converter
+###### 1.2.2.2 languages?: string [ ] | optional | default - See below.
 
-     ```javascript
-     const converter = mmMark.converter({
-       /*Showdown Options*/
-     });
-     ```
+Prism Js supported languages , its perform prismjs `loadLanguages() ` ,prismjs will load the default languages: `markup`, `css`, `clike` and `javascript` and Mmmark will preload others additional languages are as follows. Do not use with Webpack or another bundler, as this will cause Webpack to include all languages and plugins.
 
-   - Options and outputs can see in [Showdown Documentation](https://showdownjs.com/docs/)
+| Preloaded Languages |
+| ------------------- |
+| `python`            |
+| `py`                |
+| `typescript`        |
+| `ts`                |
+| `yaml`              |
+| `yml`               |
+| `toml`              |
+| `sass`              |
+| `scss`              |
+| `rust`              |
+| `ruby`              |
+| `rb`                |
+| `jsx`               |
+| `tsx`               |
+| `php`               |
+| `markdown`          |
+| `md`                |
+| `latex`             |
+| `tex`               |
+| `haskell`           |
+| `hs`                |
+| `json`              |
+| `asciidoc`          |
+| `adoc`              |
+| `bash`              |
+| `shell`             |
+| `c`                 |
+| `csharp`            |
+| `cs`                |
+| `dotnet`            |
+| `cpp`               |
+| `java`              |
 
-3. **markToHtml**
+##### 1.2.3 metadata: boolean | optional | fefault - false
 
-   - Converted HTML , Mathjax and Prism.js are supported.
+If you used metadata (as follows) , set it `true`.
 
-      ```javascript
-      const HTML = mmMark.markToHtml(/*Markdown Content*/);
-      ```
+```yaml
+---
+title: Hello World
+date: 2023-04-12
+---
+```
 
-        | Outputs       | Description                                           |
-        | ------------- | ----------------------------------------------------- |
-        | data          | frontmatter                                           |
-        | json          | {data: , content: }                                   |
-        | convertedHtml | converted whole document                              |
-        | postHtml      | Formated HTML , post title , post date , reading time |
-        | pageHtml      | Only formated contents.                               |
+#### 1.3 Return 
 
+##### 1.3.1 HTML: string | The rendered HTML string
 
+#### 1.4 Example
+
+```js
+import Mmmark from "mm-mark";
+const md = "# Hello World";
+// convert to markdown to html
+const converter = Mmmark.renderHtml(Options);
+
+console.log(html);
+
+/* 
+-- others outputs that provided by Mmmark.
+
+  <h1 id="hello-world">Hello World</h1>
+
+-- others outputs that provided by Mmmark.
+*/
+```
+
+### 2. Mmmark.getFrontmatter
+
+#### 2.1 Descriptions
+
+Generates data and content from the markdown file.
+
+#### 2.2 Options 
+
+##### 2.2.1  text: string | Markdown content
+
+#### 2.3 Return 
+
+##### 2.3.1 data: Record<string, unknown> | YAML front matter in Markdown files.
+
+##### 2.3.2 content: string | Raw markdown content.
+
+#### 2.3 Example
+
+`example.md`
+
+```md
+---
+title: Hello World
+date: 2023-04-12
 ---
 
-###  Bundled license information
+# Hello World!
+```
 
-showdown/dist/showdown.js:
-  (*! showdown v 2.1.0 - 21-04-2022 *)
+```js
+import Mmmark from "mm-mark";
+import fs from "fs";
 
-js-yaml/dist/js-yaml.mjs:
-  (*! js-yaml 4.1.0 https://github.com/nodeca/js-yaml @license MIT *)
-*/
+const md = fs.readFileSync("example.md", "utf-8");
+
+const data = Mmmark.getFrontmatter(md).data
+const content = Mmmark.getFrontmatter(md).content
+```
 
 ---

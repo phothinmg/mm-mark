@@ -1,9 +1,7 @@
 {
   "imports": {
-    "js-yaml": "npm:js-yaml@^4.1.0",
     "showdown": "npm:showdown@^2.1.0",
-    "showdown-mathjax": "npm:showdown-mathjax@^1.0.3",
-    "showdown-prism": "npm:showdown-prism@^0.2.0",
-    "showmark-toc": "npm:showmark-toc@^0.1.0"
+    "showdown-mathjax": "npm:showdown-mathjax@^1.0.4",
+    "showdown-prism": "npm:showdown-prism@^1.0.5"
   }
 }
