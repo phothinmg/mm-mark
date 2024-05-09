@@ -7,7 +7,7 @@
       "LICENSE",
       "README.md",
       "jsr.json",
-      "deno/**/*",
+      "jsr/**/*.ts",
       "import_map.json"
     ]
   }
