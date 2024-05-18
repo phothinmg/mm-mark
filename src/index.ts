@@ -1,6 +1,7 @@
 import Showdown from "showdown";
 import showdownPrism from "showdown-prism";
 import showdownMathjax from "showdown-mathjax";
+import showdownAdmonitionBlock from "showdown-admonitionblock";
 import frontmatter from "./frontmatter";
 import { supportedLanguages } from "./supportedLangs";
 /**
@@ -51,9 +52,24 @@ import { supportedLanguages } from "./supportedLangs";
  *
  * ---
  *
- *
+ * @example 
+ * 
+ *  import Mmmark from "mm-mark";
+ * 
+ *  const data = Mmmark.getFrontmatter(_markdown_content_).data; // YAML metadata from `.md` file
+ *  const content = Mmmark.getFrontmatter(_markdown_content_).data;
+ * 
+ *  const convertedHTML = Mmmark.renderHtml({
+ *  text: content,
+ *  prismOptions :{ // for syntax highlight
+ *    theme?: string, // default "vs", Available Themes can br see at readme.md
+ *    languages?: string[]; // Preloaded Languages at readme.md and Supported languages at https://prismjs.com/
+ *   },
+ *  matadata : boolean; // default `false` , using YAML metadata or not.
+ * })
  *
  */
+
 namespace Mmmark {
   /**
    * Type definition for MmmarkOptions.
@@ -78,6 +94,7 @@ namespace Mmmark {
         languages: [...supportedLanguages, ...(options?.languages ?? [])],
         theme: options?.theme,
       }),
+      showdownAdmonitionBlock,
     ];
     const converterOptions = {
       /**
@@ -152,10 +169,10 @@ namespace Mmmark {
    * @property {MmmarkOptions} mmOptions - Optional configuration options for the Mmmark converter.
    * @property {boolean} metadata - Flag indicating whether to include metadata in the rendered HTML.
    */
-  type RenderOptions = {
+  export type RenderOptions = {
     text: string;
-    mmOptions: MmmarkOptions;
-    metadata: boolean;
+    prismOptions?: MmmarkOptions;
+    metadata?: boolean;
   };
   function getContent(Opts: RenderOptions): string {
     return Opts.metadata ? frontmatter(Opts.text).content : Opts.text;
@@ -178,7 +195,7 @@ namespace Mmmark {
    */
   export const renderHtml = (opts: RenderOptions): string => {
     const content: string = getContent(opts);
-    const cont: Showdown.Converter = converter(opts.mmOptions);
+    const cont: Showdown.Converter = converter(opts.prismOptions);
     const html: string = cont.makeHtml(content);
     return createHtmlWrapper(html);
   };

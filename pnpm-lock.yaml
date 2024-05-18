@@ -14,6 +14,9 @@ importers:
       jsr:
         specifier: ^0.12.4
         version: 0.12.4
+      showdown-admonitionblock:
+        specifier: ^1.0.2
+        version: 1.0.2
       showdown-mathjax:
         specifier: ^1.0.4
         version: 1.0.4
@@ -1696,6 +1699,9 @@ packages:
   shebang-regex@3.0.0:
     resolution: {integrity: sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==}
     engines: {node: '>=8'}
+
+  showdown-admonitionblock@1.0.2:
+    resolution: {integrity: sha512-8tV7K1m2y277Yh548ap9VZpgqeZZX7WT+HodIyHyJj+XListntgqJqEPHeQuYcfKEThmPZTUXBp4KQRZgGZmPQ==}
 
   showdown-mathjax@1.0.4:
     resolution: {integrity: sha512-ysoutK/Yfybrp1hMU7nmdRQxshBGsGyOk9Ig91kvNxW6GiTUiUwbehupBQTMaWLC3qOKR1VZCmFYPtKqcHfUCA==}
@@ -3867,6 +3873,11 @@ snapshots:
   shebang-regex@1.0.0: {}
 
   shebang-regex@3.0.0: {}
+
+  showdown-admonitionblock@1.0.2:
+    dependencies:
+      '@types/showdown': 2.0.6
+      showdown: 2.1.0
 
   showdown-mathjax@1.0.4:
     dependencies:
