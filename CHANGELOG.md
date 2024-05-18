@@ -1,5 +1,11 @@
 # mm-mark
 
+## 0.2.5
+
+### Patch Changes
+
+- fix export , add showdown-admonitionblock
+
 ## 0.2.4
 
 ### Patch Changes
