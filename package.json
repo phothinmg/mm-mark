@@ -6,8 +6,8 @@
     "build": "tsup"
   },
   "type": "module",
-  "main": "dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "dist/mod.js",
+  "types": "./dist/mod.d.ts",
   "author": "Pho Thin Maung",
   "license": "Apache-2.0",
   "keywords": [

@@ -1,4 +1,4 @@
-export const supportedLanguages = [
+export const supportedLanguages: string[] = [
   "python",
   "py",
   "typescript",
