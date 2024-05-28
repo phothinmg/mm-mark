@@ -10,4 +10,5 @@ export default defineConfig({
   bundle: true,
   treeshake: true,
   minify: true,
+  clean: true
 });

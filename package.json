@@ -26,18 +26,18 @@
     "@types/node": "^20.12.10",
     "@types/prismjs": "^1.26.4",
     "@types/showdown": "^2.0.6",
+    "asciidoctor": "^3.0.4",
     "esbuild-plugin-polyfill-node": "^0.3.0",
     "js-yaml": "^4.1.0",
+    "jsr": "^0.12.4",
     "prismjs": "^1.29.0",
     "showdown": "^2.1.0",
     "tsup": "^8.0.2",
     "typescript": "^5.4.5"
   },
   "dependencies": {
-    "asciidoctor": "^3.0.4",
-    "jsr": "^0.12.4",
     "showdown-admonitionblock": "^1.0.2",
     "showdown-mathjax": "^1.0.4",
-    "showdown-prism": "^1.0.5"
+    "showdown-prism": "^1.0.7"
   }
 }
