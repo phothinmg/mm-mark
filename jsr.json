@@ -7,7 +7,7 @@
       "LICENSE",
       "README.md",
       "jsr.json",
-      "src/**/*.ts",
+      "jsr/**/*.ts",
       "import_map.json"
     ]
   }

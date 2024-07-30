@@ -1,6 +1,6 @@
 {
   "name": "mm-mark",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "description": "Markdown and Html Converter",
   "scripts": {
     "check": "biome check --write src",
