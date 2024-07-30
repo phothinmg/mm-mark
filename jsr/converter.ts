@@ -3,13 +3,13 @@ import Showdown from "showdown";
 import showdownAdmonitionBlock from "showdown-admonitionblock";
 import showdownMathjax from "showdown-mathjax";
 import showdownPrism from "showdown-prism";
-import { supportedLanguages } from "./supportedLangs.js";
+import { supportedLanguages } from "./supportedLangs";
 import type {
 	DataProps,
 	FrontMatter,
 	MmmarkOptions,
 	RenderOptions,
-} from "./types.js";
+} from "./types";
 
 /* 
 ## Main dependencies bundled license information.

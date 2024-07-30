@@ -1,13 +1,21 @@
 {
   "name": "mm-mark",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "description": "Markdown and Html Converter",
   "scripts": {
+    "check": "biome check --write src",
+    "format": "biome format --write src ",
+    "lint": "biome lint --write src",
     "build": "tsup"
   },
   "type": "module",
-  "main": "dist/mod.js",
-  "types": "./dist/mod.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
   "author": "Pho Thin Maung",
   "license": "Apache-2.0",
   "keywords": [
@@ -21,6 +29,7 @@
   },
   "devDependencies": {
     "@asciidoctor/core": "^3.0.4",
+    "@biomejs/biome": "^1.8.3",
     "@changesets/cli": "^2.27.1",
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^20.12.10",
@@ -32,12 +41,12 @@
     "jsr": "^0.12.4",
     "prismjs": "^1.29.0",
     "showdown": "^2.1.0",
+    "showdown-mathjax": "^1.0.6",
     "tsup": "^8.0.2",
     "typescript": "^5.4.5"
   },
   "dependencies": {
     "showdown-admonitionblock": "^1.0.2",
-    "showdown-mathjax": "^1.0.4",
     "showdown-prism": "^1.0.7"
   }
 }

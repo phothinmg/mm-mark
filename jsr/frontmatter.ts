@@ -1,6 +1,6 @@
 import { load } from "js-yaml";
 
-import type { DataProps } from "./types.js";
+import type { DataProps } from "./types";
 
 /**
  * Finds the indices of the metadata in a markdown file
