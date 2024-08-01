@@ -188,6 +188,19 @@ export namespace Mmmark {
     | "vsc-dark-plus"
     | "z-touch";
 
+  export type ConverterReturnType = {
+    metadata: unknown;
+    html: string;
+    addExtension: (
+      extension:
+        | (() => Showdown.ShowdownExtension[] | Showdown.ShowdownExtension)
+        | Showdown.ShowdownExtension[]
+        | Showdown.ShowdownExtension,
+      name?: string
+    ) => void;
+    useShowdownExtension: (extensionName: string) => void;
+    getMetadataFormat: () => string;
+  };
   /**
    * Converts the given content from markdown to HTML using Showdown library with specified options and Prism theme.
    *
@@ -199,7 +212,7 @@ export namespace Mmmark {
   export const converter = (
     content: string,
     prismThemes: Theme = "okaidia"
-  ) => {
+  ): ConverterReturnType => {
     try {
       const convert = new Showdown.Converter({
         parseImgDimensions: true,
@@ -279,7 +292,7 @@ export namespace Mmmark {
         html: "",
         addExtension: () => {},
         useShowdownExtension: () => {},
-        getMetadataFormat: () => {},
+        getMetadataFormat: () => "",
       };
     }
   };
