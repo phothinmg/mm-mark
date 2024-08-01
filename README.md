@@ -102,27 +102,44 @@ import * as mod from "@ptm/mm-mark";
 
 ---
 
+```ts
+import Mmmark from "mm-mark";
+const markdown = `
+      ---
+      title: hello world
+      date: 2024-07-07
+      tags:
+          - foo
+          - bar
+      ---
 
 
+      ## Hello
+
+      `;
+
+const html = Mmmark.converter(markdown).html;
+const metadata = Mmmark.converter(markdown).metadata;
+
+console.log(html); // <h2>Hello</h2>
+console.log(metadata);
+
+/*
+  {
+    title: 'hello world',
+    date: 2024-07-07T00:00:00.000Z,
+    tags: [ 'foo', 'bar' ]
+  }
+  
+  */
+
+Mmmark.converter(options)
+
+options.content : string // Markdown content
+options.prismThemes
+```
 
 
-## Documentations
-
-### 1. Mmmark.renderHtml
-
-#### 1.1 Descriptions
-
-Renders the given text as HTML using the Showdown library.
-
-#### 1.2 Options
-
-##### 1.2.1 text: string | Markdown Contents.
-
-##### 1.2.2 RenderOptions
-
-###### 1.2.2.1 theme: string | oiptional | default - "vs"
-
-Name of Prism.js themes for code block highlight.
 
 | Available Themes      |
 | --------------------- |
@@ -153,116 +170,5 @@ Name of Prism.js themes for code block highlight.
 | `vsc-dark-plus`       |
 | `z-touch`             |
 
-###### 1.2.2.2 languages?: string [ ] | optional | default - See below.
 
-Prism Js supported languages , its perform prismjs `loadLanguages() ` ,prismjs will load the default languages: `markup`, `css`, `clike` and `javascript` and Mmmark will preload others additional languages are as follows. Do not use with Webpack or another bundler, as this will cause Webpack to include all languages and plugins.
 
-| Preloaded Languages |
-| ------------------- |
-| `python`            |
-| `py`                |
-| `typescript`        |
-| `ts`                |
-| `yaml`              |
-| `yml`               |
-| `toml`              |
-| `sass`              |
-| `scss`              |
-| `rust`              |
-| `ruby`              |
-| `rb`                |
-| `jsx`               |
-| `tsx`               |
-| `php`               |
-| `markdown`          |
-| `md`                |
-| `latex`             |
-| `tex`               |
-| `haskell`           |
-| `hs`                |
-| `json`              |
-| `asciidoc`          |
-| `adoc`              |
-| `bash`              |
-| `shell`             |
-| `c`                 |
-| `csharp`            |
-| `cs`                |
-| `dotnet`            |
-| `cpp`               |
-| `java`              |
-
-##### 1.2.3 metadata: boolean | optional | fefault - false
-
-If you used metadata (as follows) , set it `true`.
-
-```yaml
----
-title: Hello World
-date: 2023-04-12
----
-```
-
-#### 1.3 Return 
-
-##### 1.3.1 HTML: string | The rendered HTML string
-
-#### 1.4 Example
-
-```js
-import Mmmark from "mm-mark";
-const md = "# Hello World";
-// convert to markdown to html
-const converter = Mmmark.renderHtml(Options);
-
-console.log(html);
-
-/* 
--- others outputs that provided by Mmmark.
-
-  <h1 id="hello-world">Hello World</h1>
-
--- others outputs that provided by Mmmark.
-*/
-```
-
-### 2. Mmmark.getFrontmatter
-
-#### 2.1 Descriptions
-
-Generates data and content from the markdown file.
-
-#### 2.2 Options 
-
-##### 2.2.1  text: string | Markdown content
-
-#### 2.3 Return 
-
-##### 2.3.1 data: Record<string, unknown> | YAML front matter in Markdown files.
-
-##### 2.3.2 content: string | Raw markdown content.
-
-#### 2.4 Example
-
-`example.md`
-
-```md
----
-title: Hello World
-date: 2023-04-12
----
-
-# Hello World!
-```
-
-```js
-import Mmmark from "mm-mark";
-import fs from "fs";
-
-const md = fs.readFileSync("example.md", "utf-8");
-
-const data = Mmmark.getFrontmatter(md).data
-const content = Mmmark.getFrontmatter(md).content
-```
-
----
