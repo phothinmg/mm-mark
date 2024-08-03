@@ -1,13 +1,15 @@
 {
   "name": "mm-mark",
-  "version": "0.2.10",
+  "version": "0.2.12",
   "description": "Markdown and Html Converter",
   "scripts": {
     "check": "biome check --write src",
     "format": "biome format --write src ",
     "lint": "biome lint --write src",
     "build": "tsup",
-    "pat": "changeset && changeset version patch && changeset publish"
+    "cs": "changeset",
+    "ver": "changeset version",
+    "pub": "changeset publish"
   },
   "type": "module",
   "exports": {

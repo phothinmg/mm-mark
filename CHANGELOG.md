@@ -1,5 +1,18 @@
 # mm-mark
 
+## 0.2.12
+
+### Patch Changes
+
+- fgg
+
+## 0.2.11
+
+### Patch Changes
+
+- Change index
+- ca
+
 ## 0.2.10
 
 ### Patch Changes
