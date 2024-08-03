@@ -9,6 +9,5 @@ export default defineConfig({
   format: ["esm"],
   bundle: true,
   treeshake: true,
-  minify: true,
   clean: true
 });

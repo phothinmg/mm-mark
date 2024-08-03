@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      showdown-admonitionblock:
-        specifier: ^1.0.2
-        version: 1.0.2
       showdown-mathjax:
         specifier: ^1.0.6
         version: 1.0.6
@@ -30,9 +27,6 @@ importers:
       '@types/node':
         specifier: ^20.12.10
         version: 20.12.10
-      '@types/prismjs':
-        specifier: ^1.26.4
-        version: 1.26.4
       '@types/showdown':
         specifier: ^2.0.6
         version: 2.0.6
@@ -42,9 +36,6 @@ importers:
       jsr:
         specifier: ^0.12.4
         version: 0.12.4
-      prismjs:
-        specifier: ^1.29.0
-        version: 1.29.0
       showdown:
         specifier: ^2.1.0
         version: 2.1.0
@@ -617,9 +608,6 @@ packages:
 
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
-
-  '@types/prismjs@1.26.4':
-    resolution: {integrity: sha512-rlAnzkW2sZOjbqZ743IHUhFcvzaGbqijwOu8QZnZCjfQzBqFE3s4lOTJEsxikImav9uzz/42I+O7YUs1mWgMlg==}
 
   '@types/semver@7.5.8':
     resolution: {integrity: sha512-I8EUhyrgfLrcTkzV3TSsGyl1tSuPrEDzr0yd5m90UgNxQkyDXULk3b6MlQqTCpZpNtWe1K0hzclnZkTcLBe2UQ==}
@@ -1599,9 +1587,6 @@ packages:
     resolution: {integrity: sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==}
     engines: {node: '>=8'}
 
-  showdown-admonitionblock@1.0.2:
-    resolution: {integrity: sha512-8tV7K1m2y277Yh548ap9VZpgqeZZX7WT+HodIyHyJj+XListntgqJqEPHeQuYcfKEThmPZTUXBp4KQRZgGZmPQ==}
-
   showdown-mathjax@1.0.6:
     resolution: {integrity: sha512-zsa/D0MO3pS0v8/S0r0hbST/duIL8trasx+p/aJc7PPUTB5n9oE7e2MQTdSwolWx2ihnxnzN3ejPouU+6NZjzw==}
 
@@ -2403,8 +2388,6 @@ snapshots:
       undici-types: 5.26.5
 
   '@types/normalize-package-data@2.4.4': {}
-
-  '@types/prismjs@1.26.4': {}
 
   '@types/semver@7.5.8': {}
 
@@ -3459,11 +3442,6 @@ snapshots:
   shebang-regex@1.0.0: {}
 
   shebang-regex@3.0.0: {}
-
-  showdown-admonitionblock@1.0.2:
-    dependencies:
-      '@types/showdown': 2.0.6
-      showdown: 2.1.0
 
   showdown-mathjax@1.0.6:
     dependencies:

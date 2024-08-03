@@ -8,7 +8,7 @@
 
 ## Convert Markdown to HTML
 
-Mmmark : Convert Md to Html with my own Prism.js code highlight and Mathjax extenstions of Showdown.Js.
+Mmmark : Convert Md to Html with Showdown.Js.
 
 > [!NOTE]
 > This package focus on convert markdown to html . If you want more, recommended to use [Showdown.js](https://github.com/showdownjs/showdown)
@@ -102,73 +102,62 @@ import * as mod from "@ptm/mm-mark";
 
 ---
 
+### Markdown to HTML.
+
 ```ts
 import Mmmark from "mm-mark";
-const markdown = `
-      ---
-      title: hello world
-      date: 2024-07-07
-      tags:
-          - foo
-          - bar
-      ---
+// types for frontmatter yaml data
+type MyType = {
+  type: string;
+  title: string;
+};
+
+const mdcontent = `
+---
+title: hello world
+date: 2024-07-07
+tags:
+    - foo
+    - bar
+---
 
 
-      ## Hello
+## Hello
 
-      `;
+`;
 
-const html = Mmmark.converter(markdown).html;
-const metadata = Mmmark.converter(markdown).metadata;
-
-console.log(html); // <h2>Hello</h2>
-console.log(metadata);
-
-/*
-  {
-    title: 'hello world',
-    date: 2024-07-07T00:00:00.000Z,
-    tags: [ 'foo', 'bar' ]
-  }
-  
-  */
-
-Mmmark.converter(options)
-
-options.content : string // Markdown content
-options.prismThemes
+const foo = Mmmark.converter<MyType>(mdcontent, {
+  backslashEscapesHTMLTags: true,
+  extensions: [],
+});
+foo.setFlavor("github"); // Set flavor for this converter
+console.log(foo.data); // { title: 'hello world',  date: 2024-07-07T00:00:00.000Z, tags: [ 'foo', 'bar' ] }
+console.log(foo.html); // <h2 id="hello">Hello</h2>
 ```
 
+### Frontmatter
+
+```ts
+type MyType = {
+  type: string;
+  title: string;
+};
+
+const mdcontent = `
+    ---
+    title: hello world
+    date: 2024-07-07
+    tags:
+        - foo
+        - bar
+    ---
 
 
-| Available Themes      |
-| --------------------- |
-| `actom-dark`          |
-| `cb`                  |
-| `coldark-dark`        |
-| `dark`                |
-| `holi-theme`          |
-| `duotone-earth`       |
-| `duotone-forest`      |
-| `duotone-light`       |
-| `duotone-sea`         |
-| `duotone-space`       |
-| `funky`               |
-| `ghcolors`            |
-| `gruvbox-light`       |
-| `laserwave`           |
-| `lucario`             |
-| `night-owl`           |
-| `okaidia`             |
-| `one-dark`            |
-| `one-light`           |
-| `solarized-dark-atom` |
-| `synthwave84`         |
-| `tomorrow`            |
-| `twilight`            |
-| `vs`                  |
-| `vsc-dark-plus`       |
-| `z-touch`             |
+    ## Hello
 
+    `;
 
-
+const foo = Mmmark.frontmatter<MyType>(mdcontent);
+console.log(foo.data); // { title: 'hello world',  date: 2024-07-07T00:00:00.000Z, tags: [ 'foo', 'bar' ] }
+console.log(foo.content); // ## Hello
+```
