@@ -3,7 +3,7 @@ import { FrontMatter, type FrontMatterResult } from "./frontmatter.js";
 import { ConvertMd } from "./tohtml.js";
 
 export namespace Mmmark {
-	/**
+  /**
    * **Convert  Markdown to Html with Showdown js.**
    * 
    * ---
@@ -79,14 +79,14 @@ export namespace Mmmark {
 
    * ```
    */
-	export function converter<T>(
-		mdcontent: string,
-		options?: MmConverter,
-	): ConvertMd<T> {
-		return new ConvertMd<T>(mdcontent, options);
-	}
+  export function converter<T>(
+    mdcontent: string,
+    options?: MmConverter
+  ): ConvertMd<T> {
+    return new ConvertMd<T>(mdcontent, options);
+  }
 
-	/**
+  /**
  * **Retrieves the frontmatter data and content from markdown contents.**
  *
  *
@@ -129,7 +129,9 @@ export namespace Mmmark {
  * ```
  *
  */
-	export function frontmatter<T>(content: string): FrontMatterResult<T> {
-		return new FrontMatter(content).frontmatter();
-	}
+  export function frontmatter<T>(content: string): FrontMatterResult<T> {
+    return new FrontMatter(content).frontmatter();
+  }
 }
+
+export type { MmConverter, FrontMatterResult };
