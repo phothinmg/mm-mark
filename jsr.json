@@ -1,6 +1,6 @@
 {
   "name": "@ptm/mm-mark",
-  "version": "0.2.11",
+  "version": "0.2.12",
   "exports": "./jsr/mod.ts",
   "publish": {
     "include": [
