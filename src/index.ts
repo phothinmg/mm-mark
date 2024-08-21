@@ -778,7 +778,7 @@ namespace Mmmark {
      *   .makeHtml('...');
      * ```
      */
-    listen(name: string, callback: EventListener) {
+    listen(name: string, callback: EventListener): Converter {
       return this.converter.listen(name, callback);
     }
     /**
@@ -803,7 +803,7 @@ namespace Mmmark {
      * @param extension - The new extension to add.
      * @param name - The extension name.
      */
-    addExtension(extension: Extension) {
+    addExtension(extension: Extension): void {
       return this.converter.addExtension(extension);
     }
     /**
@@ -822,7 +822,7 @@ namespace Mmmark {
      * @param [HTMLParser] A WHATWG DOM and HTML parser, such as JSDOM. If none is supplied, window.document will be used.
      * @returns The output markdown.
      */
-    makeMarkdown(src: string, HTMLParser?: Document) {
+    makeMarkdown(src: string, HTMLParser?: Document): string {
       return this.converter.makeMarkdown(src, HTMLParser);
     }
     /**
@@ -1016,7 +1016,10 @@ namespace Mmmark {
    * @param func - The handler function of the new parser.
    * @throws Throws if `name` is not of type string.
    */
-  export function registerSubParser(name: string, func: Showdown.SubParser) {
+  export function registerSubParser(
+    name: string,
+    func: Showdown.SubParser
+  ): void {
     return Showdown.subParser(name, func);
   }
 }
