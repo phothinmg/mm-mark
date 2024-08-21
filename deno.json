@@ -1,0 +1,18 @@
+{
+  "$schema": "./deno.schema.json",
+  "name": "@ptm/mm-mark",
+  "version": "0.2.15",
+  "exports": "./jsr/mod.ts",
+  "imports": {
+    "showdown": "npm:showdown",
+    "@types/showdown": "npm:@types/showdown",
+    "js-yaml": "npm:js-yaml",
+    "@types/js-yaml": "npm:@types/js-yaml"
+  },
+  "publish": {
+    "include": ["LICENSE", "README.md", "jsr.json", "jsr/**/*.ts", "deno.json"]
+  },
+  "compilerOptions": {
+    "noImplicitAny": true
+  }
+}

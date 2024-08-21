@@ -1,45 +1,42 @@
 {
-  "name": "mm-mark",
-  "version": "0.2.15",
-  "description": "Markdown and Html Converter",
-  "scripts": {
-    "check": "biome check --write src/index.ts",
-    "format": "biome format --write src/index.ts ",
-    "lint": "biome lint --write src/index.ts",
-    "build": "tsup",
-    "cs": "changeset",
-    "ver": "changeset version",
-    "pub": "changeset publish"
-  },
-  "type": "module",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    }
-  },
-  "author": "Pho Thin Maung",
-  "license": "Apache-2.0",
-  "keywords": [
-    "Markdown",
-    "Showdown",
-    "converter"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/phothinmg/mm-mark.git"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "^1.8.3",
-    "@changesets/cli": "^2.27.1",
-    "@types/js-yaml": "^4.0.9",
-    "@types/node": "^20.12.10",
-    "@types/showdown": "^2.0.6",
-    "js-yaml": "^4.1.0",
-    "jsr": "^0.12.4",
-    "showdown": "^2.1.0",
-    "tsup": "^8.0.2",
-    "tsx": "^4.16.5",
-    "typescript": "^5.4.5"
-  }
+	"name": "mm-mark",
+	"version": "0.2.15",
+	"description": "Markdown and Html Converter",
+	"scripts": {
+		"check": "biome check --write src/index.ts",
+		"format": "biome format --write src/index.ts ",
+		"lint": "biome lint --write src/index.ts",
+		"build": "tsup",
+		"cs": "changeset",
+		"ver": "changeset version",
+		"pub": "changeset publish",
+		"jsr": "jsr publish"
+	},
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js"
+		}
+	},
+	"author": "Pho Thin Maung",
+	"license": "Apache-2.0",
+	"keywords": ["Markdown", "Showdown", "converter"],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/phothinmg/mm-mark.git"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^1.8.3",
+		"@changesets/cli": "^2.27.1",
+		"@types/js-yaml": "^4.0.9",
+		"@types/node": "^20.12.10",
+		"@types/showdown": "^2.0.6",
+		"js-yaml": "^4.1.0",
+		"jsr": "^0.12.4",
+		"showdown": "^2.1.0",
+		"tsup": "^8.0.2",
+		"tsx": "^4.16.5",
+		"typescript": "^5.4.5"
+	}
 }

@@ -1,8 +1,0 @@
-{
-  "imports": {
-    "showdown": "npm:showdown@^2.1.0",
-    "@types/showdown": "npm:@types/showdown",
-    "js-yaml": "npm: js-yaml@^0.12.4",
-    "@types/js-yaml": "npm:@types/js-yaml"
-  }
-}
