@@ -8,6 +8,12 @@ importers:
 
   .:
     dependencies:
+      '@types/showdown':
+        specifier: ^2.0.6
+        version: 2.0.6
+      showdown:
+        specifier: ^2.1.0
+        version: 2.1.0
       showdown-mathjax:
         specifier: ^1.0.6
         version: 1.0.6
@@ -27,18 +33,12 @@ importers:
       '@types/node':
         specifier: ^20.12.10
         version: 20.12.10
-      '@types/showdown':
-        specifier: ^2.0.6
-        version: 2.0.6
       js-yaml:
         specifier: ^4.1.0
         version: 4.1.0
       jsr:
         specifier: ^0.12.4
         version: 0.12.4
-      showdown:
-        specifier: ^2.1.0
-        version: 2.1.0
       tsup:
         specifier: ^8.0.2
         version: 8.0.2(ts-node@10.9.2(@types/node@20.12.10)(typescript@5.4.5))(typescript@5.4.5)

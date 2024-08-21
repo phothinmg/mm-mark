@@ -3,9 +3,9 @@
   "version": "0.2.13",
   "description": "Markdown and Html Converter",
   "scripts": {
-    "check": "biome check --write src",
-    "format": "biome format --write src ",
-    "lint": "biome lint --write src",
+    "check": "biome check --write src/index.ts",
+    "format": "biome format --write src/index.ts ",
+    "lint": "biome lint --write src/index.ts",
     "build": "tsup",
     "cs": "changeset",
     "ver": "changeset version",
@@ -34,15 +34,15 @@
     "@changesets/cli": "^2.27.1",
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^20.12.10",
-    "@types/showdown": "^2.0.6",
     "js-yaml": "^4.1.0",
     "jsr": "^0.12.4",
-    "showdown": "^2.1.0",
     "tsup": "^8.0.2",
     "tsx": "^4.16.5",
     "typescript": "^5.4.5"
   },
   "dependencies": {
+    "@types/showdown": "^2.0.6",
+    "showdown": "^2.1.0",
     "showdown-mathjax": "^1.0.6",
     "showdown-prism": "^1.0.7"
   }
