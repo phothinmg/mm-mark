@@ -7,19 +7,6 @@ settings:
 importers:
 
   .:
-    dependencies:
-      '@types/showdown':
-        specifier: ^2.0.6
-        version: 2.0.6
-      showdown:
-        specifier: ^2.1.0
-        version: 2.1.0
-      showdown-mathjax:
-        specifier: ^1.0.6
-        version: 1.0.6
-      showdown-prism:
-        specifier: ^1.0.7
-        version: 1.0.7
     devDependencies:
       '@biomejs/biome':
         specifier: ^1.8.3
@@ -33,12 +20,18 @@ importers:
       '@types/node':
         specifier: ^20.12.10
         version: 20.12.10
+      '@types/showdown':
+        specifier: ^2.0.6
+        version: 2.0.6
       js-yaml:
         specifier: ^4.1.0
         version: 4.1.0
       jsr:
         specifier: ^0.12.4
         version: 0.12.4
+      showdown:
+        specifier: ^2.1.0
+        version: 2.1.0
       tsup:
         specifier: ^8.0.2
         version: 8.0.2(ts-node@10.9.2(@types/node@20.12.10)(typescript@5.4.5))(typescript@5.4.5)
@@ -1461,10 +1454,6 @@ packages:
     engines: {node: '>=10.13.0'}
     hasBin: true
 
-  prismjs@1.29.0:
-    resolution: {integrity: sha512-Kx/1w86q/epKcmte75LNrEoT+lX8pBpavuAbvJWRXar7Hz8jrtF+e3vY751p0R8H9HdArwaCTNDDzHg/ScJK1Q==}
-    engines: {node: '>=6'}
-
   pseudomap@1.0.2:
     resolution: {integrity: sha512-b/YwNhb8lk1Zz2+bXXpS/LK9OisiZZ1SNsSLxN1x2OXVEhW2Ckr/7mWE5vrC1ZTiJlD9g19jWszTmJsB+oEpFQ==}
 
@@ -1586,12 +1575,6 @@ packages:
   shebang-regex@3.0.0:
     resolution: {integrity: sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==}
     engines: {node: '>=8'}
-
-  showdown-mathjax@1.0.6:
-    resolution: {integrity: sha512-zsa/D0MO3pS0v8/S0r0hbST/duIL8trasx+p/aJc7PPUTB5n9oE7e2MQTdSwolWx2ihnxnzN3ejPouU+6NZjzw==}
-
-  showdown-prism@1.0.7:
-    resolution: {integrity: sha512-vdZZsXWJaF1wkIBQAgQdo/6nMZ03NFQdH1XyPWFT4OFDSLEQvkgLrnBSr23kQseIuxpCFThPYUlrHlwdEiO29Q==}
 
   showdown@2.1.0:
     resolution: {integrity: sha512-/6NVYu4U819R2pUIk79n67SYgJHWCce0a5xTP979WbNp0FL9MN1I1QK662IDU1b6JzKTvmhgI7T7JYIxBi3kMQ==}
@@ -3302,8 +3285,6 @@ snapshots:
 
   prettier@2.8.8: {}
 
-  prismjs@1.29.0: {}
-
   pseudomap@1.0.2: {}
 
   punycode@2.3.1: {}
@@ -3442,14 +3423,6 @@ snapshots:
   shebang-regex@1.0.0: {}
 
   shebang-regex@3.0.0: {}
-
-  showdown-mathjax@1.0.6:
-    dependencies:
-      showdown: 2.1.0
-
-  showdown-prism@1.0.7:
-    dependencies:
-      prismjs: 1.29.0
 
   showdown@2.1.0:
     dependencies:

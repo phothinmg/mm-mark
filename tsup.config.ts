@@ -1,8 +1,8 @@
 import { defineConfig } from "tsup";
 
 export default defineConfig({
-  entry: ["a.ts"],
-  outDir: "./asan",
+  entry: ["src/index.ts"],
+  outDir: "./dist",
   splitting: true,
   sourcemap: true,
   dts: true,
