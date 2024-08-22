@@ -16,6 +16,14 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
+    },
+    "./frontmatter": {
+      "types": "./dist/frontmatter/index.d.ts",
+      "import": "./dist/frontmatter/index.js"
+    },
+    "./extensions": {
+      "types": "./dist/extensions/index.d.ts",
+      "import": "./dist/extensions/index.js"
     }
   },
   "author": "Pho Thin Maung",
