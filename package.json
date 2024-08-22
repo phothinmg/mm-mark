@@ -9,8 +9,7 @@
     "build": "tsup",
     "cs": "changeset",
     "ver": "changeset version",
-    "npm": "changeset publish",
-    "jsr": "deno publish"
+    "npm": "changeset publish"
   },
   "type": "module",
   "exports": {
