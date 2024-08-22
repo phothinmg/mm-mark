@@ -4,9 +4,9 @@
   "version": "0.2.16",
   "exports": "./jsr/mod.ts",
   "imports": {
-    "showdown": "npm:showdown",
+    "showdown": "npm:showdown@^2.0.6",
     "@types/showdown": "npm:@types/showdown",
-    "js-yaml": "npm:js-yaml",
+    "js-yaml": "npm:js-yaml@^4.0.9",
     "@types/js-yaml": "npm:@types/js-yaml"
   },
   "publish": {
