@@ -3,11 +3,11 @@ import type { ConverterOptions } from "showdown";
 /**
  * Clone of Showdown.ConverterOptions
  */
-export type MmmarkConverterOptions = ConverterOptions;
+type MmmarkConverterOptions = ConverterOptions;
 /**
  * Options for user choice
  */
-export type MmmarkUserSelectOptions = {
+type MmmarkUserSelectOptions = {
   /**
    * Support for HTML Tag escaping.
    *
@@ -390,7 +390,7 @@ export type MmmarkUserSelectOptions = {
  * @param options - Optional custom options to override the default settings.
  * @returns The options object for the Markdown converter.
  */
-export const getAllOptions = (
+const getAllOptions = (
   options?: MmmarkUserSelectOptions
 ): MmmarkConverterOptions => {
   const dfoptions: MmmarkConverterOptions = {
@@ -432,4 +432,10 @@ export const getAllOptions = (
     underline: options?.underline ?? false,
   };
   return dfoptions;
+};
+
+export {
+  getAllOptions,
+  type MmmarkConverterOptions,
+  type MmmarkUserSelectOptions,
 };

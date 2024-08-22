@@ -1,18 +1,18 @@
-import Showdown, {
-  type Converter,
-  type Flavor,
-  type ShowdownExtension,
-  type EventListener,
-} from "showdown";
-import { type FrontMatterResult, frontmatter } from "./frontmatter.js";
-import {
-  type MmmarkConverterOptions,
-  type MmmarkUserSelectOptions,
-  getAllOptions,
-} from "./getalloptions.js";
+// import Showdown, {
+//   type Converter,
+//   type Flavor,
+//   type ShowdownExtension,
+//   type EventListener,
+// } from "showdown";
+// import { type FrontMatterResult, frontmatter } from "./frontmatter/index.js";
+// import {
+//   type MmmarkConverterOptions,
+//   type MmmarkUserSelectOptions,
+//   getAllOptions,
+// } from "./helper/getalloptions.js";
 
-type Mmextension = ShowdownExtension;
-type MmFlavor = Flavor;
+// type Mmextension = ShowdownExtension;
+// type MmFlavor = Flavor;
 
 
 // class MmmarkConverter<T> {
@@ -108,15 +108,15 @@ type MmFlavor = Flavor;
 //   return new MmmarkConverter<T>(mdcontent, options);
 // }
 
-function converter(options?: MmmarkUserSelectOptions) {
-  const opts: MmmarkConverterOptions = getAllOptions(options);
-  return new Showdown.Converter(opts);
-}
-export { converter, frontmatter };
-export type {
-  MmmarkUserSelectOptions,
-  Mmextension,
-  MmFlavor,
-  FrontMatterResult,
-  MmmarkConverterOptions,
-};
+// function converter(options?: MmmarkUserSelectOptions) {
+//   const opts: MmmarkConverterOptions = getAllOptions(options);
+//   return new Showdown.Converter(opts);
+// }
+// export { converter, frontmatter };
+// export type {
+//   MmmarkUserSelectOptions,
+//   Mmextension,
+//   MmFlavor,
+//   FrontMatterResult,
+//   MmmarkConverterOptions,
+// };
