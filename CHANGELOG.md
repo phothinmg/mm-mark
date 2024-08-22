@@ -1,5 +1,11 @@
 # mm-mark
 
+## 0.2.16
+
+### Patch Changes
+
+- remove namespace
+
 ## 0.2.15
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 {
   "name": "mm-mark",
-  "version": "0.2.15",
+  "version": "0.2.16",
   "description": "Markdown and Html Converter",
   "scripts": {
     "check": "biome check --write src ",
@@ -9,8 +9,8 @@
     "build": "tsup",
     "cs": "changeset",
     "ver": "changeset version",
-    "pub": "changeset publish",
-    "jsr": "jsr publish"
+    "npm": "changeset publish",
+    "jsr": "deno publish"
   },
   "type": "module",
   "exports": {

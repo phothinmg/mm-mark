@@ -1,7 +1,7 @@
 {
   "$schema": "./deno.schema.json",
   "name": "@ptm/mm-mark",
-  "version": "0.2.15",
+  "version": "0.2.16",
   "exports": "./jsr/mod.ts",
   "imports": {
     "showdown": "npm:showdown",
