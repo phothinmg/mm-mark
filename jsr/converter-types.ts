@@ -206,7 +206,7 @@ export type Converter = {
    * @param [HTMLParser] A WHATWG DOM and HTML parser, such as JSDOM. If none is supplied, window.document will be used.
    * @returns The output markdown.
    */
-  makeMarkdown(src: string, HTMLParser?: Document): string;
+  makeMarkdown(src: string, HTMLParser?: any): string;
 
   /**
    * Setting a "local" option only affects the specified Converter object.
