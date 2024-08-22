@@ -11,6 +11,8 @@ import {
   getAllOptions,
 } from "./getalloptions.js";
 
+type Mmext = ShowdownExtension;
+type MmFlavor = Flavor;
 type Extension =
   | (() => ShowdownExtension[] | ShowdownExtension)
   | ShowdownExtension[]
@@ -112,8 +114,8 @@ export { converter, frontmatter };
 export type {
   Extension,
   MmmarkUserSelectOptions,
-  ShowdownExtension as MmmarkExtension,
-  Flavor as MmmarkFlavor,
+  Mmext,
+  MmFlavor,
   FrontMatterResult,
   MmmarkConverterOptions,
 };

@@ -1,11 +1,11 @@
 import { converter, frontmatter } from "./converter.js";
 import type {
   Extension,
-  MmmarkFlavor,
+  MmFlavor,
   FrontMatterResult,
   MmmarkConverterOptions,
   MmmarkUserSelectOptions,
-  MmmarkExtension,
+  Mmext,
 } from "./converter.js";
 import {
   registerExtension,
@@ -27,8 +27,8 @@ export type {
   Extension,
   MmmarkConverterOptions,
   MmmarkUserSelectOptions,
-  MmmarkExtension,
-  MmmarkFlavor,
+  Mmext,
+  MmFlavor,
   FrontMatterResult,
   MmmarkSubParser,
 };
