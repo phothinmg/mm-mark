@@ -1,5 +1,8 @@
 import Showdown, { type ShowdownExtension, type SubParser } from "showdown";
-import type { Extension } from "./converter.js";
+type Extension =
+  | (() => ShowdownExtension[] | ShowdownExtension)
+  | ShowdownExtension[]
+  | ShowdownExtension;
 
 /**
  * Removes all extensions.
@@ -48,4 +51,4 @@ export {
   validateExtension,
   removeExtensions,
 };
-export type { SubParser as MmmarkSubParser };
+

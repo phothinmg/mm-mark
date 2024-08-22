@@ -12,7 +12,6 @@ import {
   removeExtensions,
   validateExtension,
 } from "./others.js";
-import type { MmmarkSubParser } from "./others.js";
 
 export {
   converter,
@@ -28,5 +27,4 @@ export type {
   Mmextension,
   MmFlavor,
   FrontMatterResult,
-  MmmarkSubParser,
 };

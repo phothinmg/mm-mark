@@ -13,10 +13,7 @@ import {
 
 type Mmextension = ShowdownExtension;
 type MmFlavor = Flavor;
-// type Extension =
-//   | (() => ShowdownExtension[] | ShowdownExtension)
-//   | ShowdownExtension[]
-//   | ShowdownExtension;
+
 
 // class MmmarkConverter<T> {
 //   private readonly _opts: MmmarkConverterOptions;
