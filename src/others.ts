@@ -1,17 +1,13 @@
-import Showdown from "showdown";
-import type {
-	MmExtension,
-	ShowdownExtension,
-	SubParser,
-} from "./converter-types.js";
+import Showdown, { type ShowdownExtension, type SubParser } from "showdown";
+import type { Extension } from "./converter.js";
 
 /**
  * Removes all extensions.
  *
  * @returns {void}
  */
-export function removeExtensions(): void {
-	return Showdown.resetExtensions();
+function removeExtensions(): void {
+  return Showdown.resetExtensions();
 }
 /**
  * Checks if the given `ext` is a valid showdown extension.
@@ -19,10 +15,10 @@ export function removeExtensions(): void {
  * @param ext - The extension to checks.
  * @returns Returns `true` if the extension is valid showdown extension, otherwise `false`.
  */
-export function validateExtension(
-	ext: ShowdownExtension[] | ShowdownExtension,
+function validateExtension(
+  ext: ShowdownExtension[] | ShowdownExtension
 ): boolean {
-	return Showdown.validateExtension(ext);
+  return Showdown.validateExtension(ext);
 }
 /**
  * Register a extension.
@@ -31,8 +27,8 @@ export function validateExtension(
  * @param ext - The extension.
  * @throws Throws if `name` is not of type string.
  */
-export function registerExtension(name: string, ext: MmExtension): void {
-	return Showdown.extension(name, ext);
+function registerExtension(name: string, ext: Extension): void {
+  return Showdown.extension(name, ext);
 }
 
 /**
@@ -42,6 +38,14 @@ export function registerExtension(name: string, ext: MmExtension): void {
  * @param func - The handler function of the new parser.
  * @throws Throws if `name` is not of type string.
  */
-export function registerSubParser(name: string, func: SubParser): void {
-	return Showdown.subParser(name, func);
+function registerSubParser(name: string, func: SubParser): void {
+  return Showdown.subParser(name, func);
 }
+
+export {
+  registerExtension,
+  registerSubParser,
+  validateExtension,
+  removeExtensions,
+};
+export type { SubParser as MmmarkSubParser };

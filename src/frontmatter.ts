@@ -1,10 +1,10 @@
 import { load } from "js-yaml";
 
-interface DataProps {
+type DataProps = {
 	lines: string[];
 	metaIndices: number[];
-}
-export interface FrontMatterResult<T> {
+};
+export type FrontMatterResult<T> = {
 	/**
 	 *  Yaml data form a markdown files
 	 */
@@ -13,7 +13,7 @@ export interface FrontMatterResult<T> {
 	 * Body content of markdown file
 	 */
 	content: string;
-}
+};
 
 /**
  * Class for parsing front matter from a markdown content string.

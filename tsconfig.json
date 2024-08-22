@@ -23,5 +23,5 @@
 		"lib/opt/**/*",
 		"jsr/**/*"
 	],
-	"include": ["sr/**/*"]
+	"include": ["src/**/*"]
 }

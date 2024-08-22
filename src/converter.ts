@@ -1,221 +1,119 @@
-import Showdown from "showdown";
-import type {
-	Converter,
-	ConverterOptions,
-	EventListener,
-	Flavor,
-	MmExtension,
-	MmmarkOptions,
-	ShowdownConvertOptions,
-	ShowdownConverterExtensions,
-	ShowdownExtension,
-} from "./converter-types.js";
+import Showdown, {
+  type Converter,
+  type Flavor,
+  type ShowdownExtension,
+  type EventListener,
+} from "showdown";
 import { type FrontMatterResult, frontmatter } from "./frontmatter.js";
-import { getAllOptions } from "./getalloptions.js";
-/**
- * **Showdown Converter**
- *
- * **Options**
- *
- * The following options are already set to `true`
- *  -  emoji
- *  -  ghCodeBlocks
- *  -  parseImgDimensions
- *  -  simplifiedAutoLink
- *  -  table
- *  -  tasklists
- *
- * More information about options;
- * @see https://github.com/showdownjs/showdown#options
- */
-class MarkdownConverter<T> {
-	private md: FrontMatterResult<T>;
-	private yamldata: T;
-	private content: string;
-	private opts: ConverterOptions | undefined;
-	private converter: Converter;
-	private firstOpts: ShowdownConvertOptions;
-	constructor(mdcontent: string, options?: ConverterOptions) {
-		this.md = frontmatter<T>(mdcontent);
-		this.yamldata = this.md.data;
-		this.content = this.md.content;
-		this.opts = options;
-		this.firstOpts = getAllOptions(this.opts);
-		this.converter = this.convert();
-	}
-	private convert(): Converter {
-		return new Showdown.Converter(this.firstOpts);
-	}
-	/**
-	 * Listen to an event.
-	 *
-	 * @param name - The event name.
-	 * @param callback - The function that will be called when the event occurs.
-	 * @throws Throws if the type of `name` is not string.
-	 * @throws Throws if the type of `callback` is not function.
-	 * @example
-	 * ```ts
-	 * let converter: Converter = new Converter();
-	 * converter
-	 *   .listen('hashBlock.before', (evtName, text, converter, options, globals) => {
-	 *     // ... do stuff to text ...
-	 *     return text;
-	 *   })
-	 *   .makeHtml('...');
-	 * ```
-	 */
-	listen(name: string, callback: EventListener): Converter {
-		return this.converter.listen(name, callback);
-	}
-	/**
-	 * Set a "local" flavor for THIS instance.
-	 *
-	 * @param flavor - The flavor name.
-	 */
-	setFlavor(name: Flavor): void {
-		return this.converter.setFlavor(name);
-	}
-	/**
-	 * Get the options of this Converter instance.
-	 *
-	 * @returns Returns the current convertor options object.
-	 */
-	getOptions(): MmmarkOptions {
-		return this.converter.getOptions();
-	}
-	/**
-	 * Add extension to THIS converter.
-	 *
-	 * @param extension - The new extension to add.
-	 * @param name - The extension name.
-	 */
-	addExtension(extension: MmExtension): void {
-		return this.converter.addExtension(extension);
-	}
-	/**
-	 * Use a global registered extension with THIS converter.
-	 *
-	 * @param extensionName - Name of the previously registered extension.
-	 */
-	useExtension(extensionName: string): void {
-		return this.converter.useExtension(extensionName);
-	}
+import {
+  type MmmarkConverterOptions,
+  type MmmarkUserSelectOptions,
+  getAllOptions,
+} from "./getalloptions.js";
 
-	/**
-	 * Converts an HTML string into a markdown string.
-	 *
-	 * @param src - The input text (HTML)
-	 * @param [HTMLParser] A WHATWG DOM and HTML parser, such as JSDOM. If none is supplied, window.document will be used.
-	 * @returns The output markdown.
-	 */
-	makeMarkdown(src: string, HTMLParser?: Document): string {
-		return this.converter.makeMarkdown(src, HTMLParser);
-	}
-	/**
-	 * Remove an extension from THIS converter.
-	 *
-	 * @remarks This is a costly operation. It's better to initialize a new converter.
-	 * and specify the extensions you wish to use.
-	 * @param extensions - The extensions to remove.
-	 */
-	removeExtension(extensions: ShowdownExtension[] | ShowdownExtension): void {
-		return this.converter.removeExtension(extensions);
-	}
-	/**
-	 * Get all extensions.
-	 *
-	 * @return all extensions.
-	 */
-	getAllExtensions(): ShowdownConverterExtensions {
-		return this.converter.getAllExtensions();
-	}
-	get data(): T {
-		return this.yamldata;
-	}
-	get html(): string {
-		return this.converter.makeHtml(this.content);
-	}
-}
+type Extension =
+  | (() => ShowdownExtension[] | ShowdownExtension)
+  | ShowdownExtension[]
+  | ShowdownExtension;
 
-/**
-   * **Convert  Markdown to Html with Showdown js.**
+class MmmarkConverter<T> {
+  private readonly _opts: MmmarkConverterOptions;
+  private _md: FrontMatterResult<T>;
+  private _content: string;
+  private _converter: Converter;
+  data: T;
+  html: string;
+  constructor(mdcontent: string, options?: MmmarkUserSelectOptions) {
+    if (!mdcontent) {
+      throw new Error("Markdown content cannot be empty");
+    }
+    this._opts = Object.freeze(getAllOptions(options));
+    this._md = frontmatter<T>(mdcontent);
+    /**
+     * Converted HTML form markdown
+     */
+    this.data = this._md.data;
+    this._content = this._md.content;
+    this._converter = new Showdown.Converter(this._opts);
+    /**
+     * YAML Frontmatter data from Markdown
+     *
+     * Between --- and ---
+     */
+    this.html = this._converter.makeHtml(this._content);
+  }
+  /**
+   * Listen to an event.
    *
-   * ---
-   *
-   *
-   *  **Options**
-   *
-   * `Showdown.ConverterOptions`
-   *
-   * The following options are already set to `true`
-   *  -  emoji
-   *  -  ghCodeBlocks
-   *  -  parseImgDimensions
-   *  -  simplifiedAutoLink
-   *  -  table
-   *  -  tasklists
-   *
-   * More information about options -
-   * @see https://github.com/showdownjs/showdown#options
-   *
-   *
-   * ---
-   *
-   * **Showdown Extension**
-   *
-   * Using Extension
-   *
-   * You can add any showdown extensions to the `options.extensions`.
-   *
-   *
-   * Create Extension
-   *
-   * @see https://github.com/showdownjs/showdown/wiki/extensions
-   *
-   * Extension Boilerplate
-   *
-   * @see https://github.com/showdownjs/extension-boilerplate
-   *
-   *
-   * ---
-   *
-   *
+   * @param name - The event name.
+   * @param callback - The function that will be called when the event occurs.
+   * @throws Throws if the type of `name` is not string.
+   * @throws Throws if the type of `callback` is not function.
    * @example
-   *
    * ```ts
-
-        type MyType = { // types for frontmatter yaml data
-        type: string;
-        title: string;
-        };
-
-        const mdcontent = `
-        ---
-        title: hello world
-        date: 2024-07-07
-        tags:
-            - foo
-            - bar
-        ---
-
-
-        ## Hello
-
-        `;
-
-        const foo = Mmmark.converter<MyType>(mdcontent, {
-        backslashEscapesHTMLTags: true,
-        extensions:[// You can add any showdown extensions]
-        });
-        foo.setFlavor("github") // Set flavor for this converter
-        console.log(foo.data); // { title: 'hello world',  date: 2024-07-07T00:00:00.000Z, tags: [ 'foo', 'bar' ] }
-        console.log(foo.html); // <h2 id="hello">Hello</h2>
-
+   * let converter: Converter = new Converter();
+   * converter
+   *   .listen('hashBlock.before', (evtName, text, converter, options, globals) => {
+   *     // ... do stuff to text ...
+   *     return text;
+   *   })
+   *   .makeHtml('...');
    * ```
    */
-export function converter<T>(
-	mdcontent: string,
-	options?: ConverterOptions,
-): MarkdownConverter<T> {
-	return new MarkdownConverter<T>(mdcontent, options);
+  listen(name: string, callback: EventListener): Converter {
+    if (typeof name !== "string" || typeof callback !== "function") {
+      throw new TypeError("Invalid arguments");
+    }
+    return this._converter.listen(name, callback);
+  }
+  /**
+   * Set a "local" flavor for THIS Converter instance.
+   *
+   * @param flavor - The flavor name.
+   */
+  setFlavor(name: Flavor): void {
+    this._converter.setFlavor(name);
+  }
+  /**
+   * Add extension to THIS converter.
+   *
+   * @param extension - The new extension to add.
+   * @param name - The extension name.
+   */
+  addExtension(extension: Extension, name?: string): void {
+    this._converter.addExtension(extension, name);
+  }
+  /**
+   * Use a global registered extension with THIS converter.
+   *
+   * @param extensionName - Name of the previously registered extension.
+   */
+  useExtension(extensionName: string): void {
+    this._converter.useExtension(extensionName);
+  }
+  /**
+   * Remove an extension from THIS converter.
+   *
+   * @remarks This is a costly operation. It's better to initialize a new converter.
+   * and specify the extensions you wish to use.
+   * @param extensions - The extensions to remove.
+   */
+  removeExtension(extensions: ShowdownExtension[] | ShowdownExtension): void {
+    this._converter.removeExtension(extensions);
+  }
 }
+function converter<T>(
+  mdcontent: string,
+  options?: MmmarkUserSelectOptions
+): MmmarkConverter<T> {
+  return new MmmarkConverter<T>(mdcontent, options);
+}
+export { converter, frontmatter };
+export type {
+  Extension,
+  MmmarkUserSelectOptions,
+  ShowdownExtension as MmmarkExtension,
+  Flavor as MmmarkFlavor,
+  FrontMatterResult,
+  MmmarkConverterOptions,
+};
