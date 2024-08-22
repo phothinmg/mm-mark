@@ -19,7 +19,7 @@ import {
  * ```
  *
  */
-function showdownYoutube(): MmExtension[] {
+function youtube(): MmExtension[] {
   return [
     {
       type: "lang",
@@ -32,6 +32,6 @@ function showdownYoutube(): MmExtension[] {
   ];
 }
 
-registerExtension("showdownYoutube", showdownYoutube());
+registerExtension("youtube", youtube());
 
-export default showdownYoutube;
+export default youtube;

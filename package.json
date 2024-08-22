@@ -41,5 +41,9 @@
     "tsup": "^8.0.2",
     "tsx": "^4.16.5",
     "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "showdown-mathjax": "^1.0.7",
+    "showdown-prism": "^1.0.7"
   }
 }
