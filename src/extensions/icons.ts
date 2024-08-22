@@ -1,6 +1,6 @@
 import {
-  registerExtension,
-  type MmExtension,
+	type MmExtension,
+	registerExtension,
 } from "../manage-extensions/index.js";
 
 /**
@@ -17,28 +17,27 @@ import {
  * ```
  */
 function icons(): MmExtension[] {
-  return [
-    {
-      type: "lang",
-      regex: "\\B(\\\\)?@fa-([\\S]+)\\b",
-      replace: function (a: any, b: string, c: string) {
-        return b === "\\" ? a : '<i class="fa fa-' + c + '">' + "</i>";
-      },
-    },
-    {
-      type: "output",
-      filter: (text: string) => {
-        const scriptTag = `
+	return [
+		{
+			type: "lang",
+			regex: "\\B(\\\\)?@fa-([\\S]+)\\b",
+			replace: (a: any, b: string, c: string) =>
+				b === "\\" ? a : `<i class="fa fa-${c}"></i>`,
+		},
+		{
+			type: "output",
+			filter: (text: string) => {
+				const scriptTag = `
         <script>
         var script = document.createElement("script");
         script.src = "https://kit.fontawesome.com/50c925d5df.js";
         script.crossorigin = "anonymous";
         document.head.appendChild(script);
         </script>`;
-        return scriptTag + text;
-      },
-    },
-  ];
+				return scriptTag + text;
+			},
+		},
+	];
 }
 
 registerExtension("icons", icons());

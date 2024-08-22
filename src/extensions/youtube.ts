@@ -1,6 +1,6 @@
 import {
-  registerExtension,
-  type MmExtension,
+	type MmExtension,
+	registerExtension,
 } from "../manage-extensions/index.js";
 
 /**
@@ -20,16 +20,16 @@ import {
  *
  */
 function youtube(): MmExtension[] {
-  return [
-    {
-      type: "lang",
-      regex: /{% youtube (.+?) %}/g,
-      replace: (_match: any, url: string) => {
-        const videoId = url.split("v=")[1] || url.split("/").pop();
-        return `<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>`;
-      },
-    },
-  ];
+	return [
+		{
+			type: "lang",
+			regex: /{% youtube (.+?) %}/g,
+			replace: (_match: any, url: string) => {
+				const videoId = url.split("v=")[1] || url.split("/").pop();
+				return `<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>`;
+			},
+		},
+	];
 }
 
 registerExtension("youtube", youtube());

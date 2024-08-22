@@ -10,7 +10,7 @@ type MmSubParser = SubParser;
  * @throws Throws if `name` is not of type string.
  */
 function registerSubParser(name: string, func: SubParser): void {
-  return Showdown.subParser(name, func);
+	return Showdown.subParser(name, func);
 }
 
 export { registerSubParser, type MmSubParser };

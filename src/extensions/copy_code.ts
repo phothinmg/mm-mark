@@ -1,15 +1,15 @@
 import {
-  registerExtension,
-  type MmExtension,
+	type MmExtension,
+	registerExtension,
 } from "../manage-extensions/index.js";
 
 /**
  *
  */
 declare global {
-  interface Window {
-    copyCodeListener?: boolean;
-  }
+	interface Window {
+		copyCodeListener?: boolean;
+	}
 }
 
 /**
@@ -17,20 +17,20 @@ declare global {
  * @param {String} className The class name of the button.
  */
 function addListener(className: string) {
-  if (typeof window !== "undefined" && window.copyCodeListener !== true) {
-    window.addEventListener("click", (e) => {
-      const target = e.target as HTMLElement;
-      if (
-        target?.classList?.contains(className) &&
-        target.nextElementSibling?.tagName === "PRE"
-      ) {
-        navigator.clipboard.writeText(
-          (target.nextElementSibling as HTMLPreElement).innerText
-        );
-      }
-    });
-    window.copyCodeListener = true;
-  }
+	if (typeof window !== "undefined" && window.copyCodeListener !== true) {
+		window.addEventListener("click", (e) => {
+			const target = e.target as HTMLElement;
+			if (
+				target?.classList?.contains(className) &&
+				target.nextElementSibling?.tagName === "PRE"
+			) {
+				navigator.clipboard.writeText(
+					(target.nextElementSibling as HTMLPreElement).innerText,
+				);
+			}
+		});
+		window.copyCodeListener = true;
+	}
 }
 /**
  * showdownCopyCode
@@ -40,19 +40,19 @@ function addListener(className: string) {
  * @function
  */
 function copyCode({ className = "copy-code" } = {}): MmExtension[] {
-  return [
-    {
-      type: "output",
-      filter: function (text: string) {
-        addListener(className);
+	return [
+		{
+			type: "output",
+			filter: (text: string) => {
+				addListener(className);
 
-        return text.replace(
-          /<pre.*><code/g,
-          `<button class="${className}">Copy</button>$&`
-        );
-      },
-    },
-  ];
+				return text.replace(
+					/<pre.*><code/g,
+					`<button class="${className}">Copy</button>$&`,
+				);
+			},
+		},
+	];
 }
 
 registerExtension("copyCode", copyCode());

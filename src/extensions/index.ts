@@ -7,11 +7,11 @@ import twitter from "./twitter.js";
 import youtube from "./youtube.js";
 
 export {
-  showdownMathjax,
-  showdownprism,
-  copyCode,
-  customClass,
-  icons,
-  twitter,
-  youtube,
+	showdownMathjax,
+	showdownprism,
+	copyCode,
+	customClass,
+	icons,
+	twitter,
+	youtube,
 };
