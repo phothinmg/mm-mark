@@ -39,7 +39,6 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.8.3",
-    "@changesets/cli": "^2.27.1",
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^20.12.10",
     "@types/showdown": "^2.0.6",
