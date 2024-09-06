@@ -1,7 +1,7 @@
 import {
-	type MmExtension,
-	registerExtension,
-} from "../manage-extensions/index.js";
+  type MmExtension,
+  registerExtension,
+} from "../manage-extensions/index.ts";
 
 /**
  *
@@ -43,32 +43,32 @@ import {
  * @returns {MmExtension[]}
  */
 function customClass(): MmExtension[] {
-	return [
-		{
-			type: "output",
-			filter: (text) => {
-				return (
-					text
-						// Add class for list (ol, ul)
-						.replace(
-							/<p>\[\.([a-z0-9A-Z\s]+)\]<\/p>[\n]?<(.+)>/g,
-							`<$2 class="$1">`,
-						)
+  return [
+    {
+      type: "output",
+      filter: (text) => {
+        return (
+          text
+            // Add class for list (ol, ul)
+            .replace(
+              /<p>\[\.([a-z0-9A-Z\s]+)\]<\/p>[\n]?<(.+)>/g,
+              `<$2 class="$1">`
+            )
 
-						// Add class for other blocks
-						.replace(/<(.+)>\[\.([a-z0-9A-Z\s]+)\]/g, `<$1 class="$2">`)
+            // Add class for other blocks
+            .replace(/<(.+)>\[\.([a-z0-9A-Z\s]+)\]/g, `<$1 class="$2">`)
 
-						// Prevent class name with 2 dashs being replace by `<em>` tag
-						.replace(/class="(.+)"/g, (str) => {
-							if (str.indexOf("<em>") !== -1) {
-								return str.replace(/<[/]?em>/g, "_");
-							}
-							return str;
-						})
-				);
-			},
-		},
-	];
+            // Prevent class name with 2 dashs being replace by `<em>` tag
+            .replace(/class="(.+)"/g, (str) => {
+              if (str.indexOf("<em>") !== -1) {
+                return str.replace(/<[/]?em>/g, "_");
+              }
+              return str;
+            })
+        );
+      },
+    },
+  ];
 }
 registerExtension("customClass", customClass());
 

@@ -1,10 +1,10 @@
 import Showdown, { type Converter } from "showdown";
 
 import {
-	type MmmarkConverterOptions,
-	type MmmarkUserSelectOptions,
-	getAllOptions,
-} from "../helper/getalloptions.js";
+  type MmmarkConverterOptions,
+  type MmmarkUserSelectOptions,
+  getAllOptions,
+} from "../helper/getalloptions.ts";
 
 type MmConverter = Converter;
 
@@ -15,8 +15,8 @@ type MmConverter = Converter;
  * @returns A new Showdown converter.
  */
 function mdConverter(options?: MmmarkUserSelectOptions) {
-	const opts: MmmarkConverterOptions = getAllOptions(options);
-	return new Showdown.Converter(opts);
+  const opts: MmmarkConverterOptions = getAllOptions(options);
+  return new Showdown.Converter(opts);
 }
 
 export { mdConverter, type MmConverter };
