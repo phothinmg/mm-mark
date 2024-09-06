@@ -3,9 +3,9 @@
   "name": "@ptm/mm-mark",
   "version": "0.2.22",
   "exports": {
-    ".": "./jsr/mod.ts",
-    "./frontmatter": "./jsr/frontmatter/mod.ts",
-    "./extensions": "./jsr/extensions/mod.ts"
+    ".": "./src/index.ts",
+    "./frontmatter": "./src/frontmatter/index.ts",
+    "./extensions": "./src/extensions/index.ts"
   },
   "imports": {
     "showdown": "npm:showdown@^2.0.6",
@@ -14,13 +14,13 @@
     "@types/js-yaml": "npm:@types/js-yaml"
   },
   "publish": {
-    "include": ["LICENSE", "README.md", "jsr.json", "jsr/**/*.ts", "deno.json"]
+    "include": ["LICENSE", "README.md", "src/**/*.ts", "deno.json"]
   },
   "compilerOptions": {
     "noImplicitAny": true
   },
   "lint": {
-    "include": ["jsr/"]
+    "include": ["src/"]
   },
   "fmt": {
     "useTabs": true,
@@ -29,7 +29,7 @@
     "semiColons": false,
     "singleQuote": true,
     "proseWrap": "preserve",
-    "include": ["jsr/"]
+    "include": ["src/"]
   },
   "lock": false
 }

@@ -160,20 +160,32 @@ console.log(foo.content); // ## Hello
 
 1. `icons`
 
+```ts
+import { mdConverter } from "mm-mark";
+import { customClass } from "mm-mark/extensions";
+
+const converter = mdConverter({
+  extensions: [icons],
+});
+
+const md = `@fa-home`;
+const html = converter.makeHtml(md);
+console.log(html); // <i class="fa fa-home"></i>
+```
+
 2. `customClass`
-
-3. `twitter`
-
-4. `youtube`
-
-You can use any `showdown` extensions.
 
 ```ts
 import { mdConverter } from "mm-mark";
-import { icons } from "mm-mark/extensions";
-const converter = mdConverter(
-  /*{Showdown Extensions} */ { extensions: [icons] }
-);
-const html = converter.makeHtml("@fa-home");
+import { customClass } from "mm-mark/extensions";
+
+const converter = mdConverter({
+  noHeaderId: true, // recommended to set `true` for option `noHeaderId` when using customClass extension
+  extensions: [customClass],
+});
+const md = `#[.header]Header`;
+const html = converter.makeHtml(md);
+console.log(html); // <h1 class="header">Header</h1>
 ```
 
+You can use any `showdown` extensions.
