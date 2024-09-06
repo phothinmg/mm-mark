@@ -176,3 +176,4 @@ const converter = mdConverter(
 );
 const html = converter.makeHtml("@fa-home");
 ```
+
