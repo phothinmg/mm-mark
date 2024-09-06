@@ -105,13 +105,7 @@ import * as mod from "@ptm/mm-mark";
 ### Markdown to HTML.
 
 ```ts
-import Mmmark from "mm-mark";
-// types for frontmatter yaml data
-type MyType = {
-  type: string;
-  title: string;
-};
-
+import { mdConverter } from "mm-mark";
 const mdcontent = `
 ---
 title: hello world
@@ -125,19 +119,17 @@ tags:
 ## Hello
 
 `;
-
-const foo = Mmmark.converter<MyType>(mdcontent, {
-  backslashEscapesHTMLTags: true,
-  extensions: [],
-});
-foo.setFlavor("github"); // Set flavor for this converter
-console.log(foo.data); // { title: 'hello world',  date: 2024-07-07T00:00:00.000Z, tags: [ 'foo', 'bar' ] }
-console.log(foo.html); // <h2 id="hello">Hello</h2>
+const converter = mdConverter(/*{Showdown Options} */);
+// set flavor for this converter
+converter.setFlavor("github");
+const html = converter.makeHtml(mdcontent);
+console.log(html); // <h2 id="hello">Hello</h2>
 ```
 
 ### Frontmatter
 
 ```ts
+import { frontmatter } from "mm-mark/frontmatter";
 type MyType = {
   type: string;
   title: string;
@@ -157,7 +149,32 @@ const mdcontent = `
 
     `;
 
-const foo = Mmmark.frontmatter<MyType>(mdcontent);
+const foo = frontmatter<MyType>(mdcontent);
 console.log(foo.data); // { title: 'hello world',  date: 2024-07-07T00:00:00.000Z, tags: [ 'foo', 'bar' ] }
 console.log(foo.content); // ## Hello
+```
+
+### Extensions
+
+**Available Extensions**
+
+1. `icons`
+
+2. `copyCode`
+
+3. `customClass`
+
+4. `twitter`
+
+5. `youtube`
+
+You can use any `showdown` extensions.
+
+```ts
+import { mdConverter } from "mm-mark";
+import { icons } from "mm-mark/extensions";
+const converter = mdConverter(
+  /*{Showdown Extensions} */ { extensions: [icons] }
+);
+const html = converter.makeHtml("@fa-home");
 ```
