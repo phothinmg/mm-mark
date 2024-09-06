@@ -160,13 +160,11 @@ console.log(foo.content); // ## Hello
 
 1. `icons`
 
-2. `copyCode`
+2. `customClass`
 
-3. `customClass`
+3. `twitter`
 
-4. `twitter`
-
-5. `youtube`
+4. `youtube`
 
 You can use any `showdown` extensions.
 
