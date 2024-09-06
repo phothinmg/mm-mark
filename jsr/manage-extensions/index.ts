@@ -1,6 +1,6 @@
-import Showdown, { type ShowdownExtension } from "showdown";
+import Showdown, { type ShowdownExtension } from 'showdown'
 
-type MmExtension = ShowdownExtension;
+type MmExtension = ShowdownExtension
 
 /**
  * Register a extension.
@@ -13,7 +13,7 @@ function registerExtension(
 	name: string,
 	ext: MmExtension | MmExtension[] | (() => MmExtension[] | MmExtension),
 ): void {
-	Showdown.extension(name, ext);
+	Showdown.extension(name, ext)
 }
 
 /**
@@ -23,7 +23,7 @@ function registerExtension(
  * @returns Returns `true` if the extension is valid showdown extension, otherwise `false`.
  */
 function validateExtension(ext: MmExtension[] | MmExtension): boolean {
-	return Showdown.validateExtension(ext);
+	return Showdown.validateExtension(ext)
 }
 
 /**
@@ -32,12 +32,12 @@ function validateExtension(ext: MmExtension[] | MmExtension): boolean {
  * @returns {void}
  */
 function removeExtensions(): void {
-	Showdown.resetExtensions();
+	Showdown.resetExtensions()
 }
 
 export {
-	registerExtension,
-	validateExtension,
-	removeExtensions,
 	type MmExtension,
-};
+	registerExtension,
+	removeExtensions,
+	validateExtension,
+}

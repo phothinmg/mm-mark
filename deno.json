@@ -1,7 +1,7 @@
 {
   "$schema": "./deno.schema.json",
   "name": "@ptm/mm-mark",
-  "version": "0.2.16",
+  "version": "0.2.22",
   "exports": {
     ".": "./jsr/mod.ts",
     "./frontmatter": "./jsr/frontmatter/mod.ts",

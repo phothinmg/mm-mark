@@ -1,16 +1,14 @@
 import {
-  type MmExtension,
-  registerExtension,
-} from "../manage-extensions/index.ts";
+	type MmExtension,
+	registerExtension,
+} from '../manage-extensions/index.ts'
 
 /**
- *
  * This extension was inspired by
  *
  * https://www.npmjs.com/package/showdown-custom-class
  *
  * Showdown Custom Class Extension
- *
  *
  * @example
  *
@@ -39,37 +37,37 @@ import {
  * <p class="pTag line">Just a line of text.</p>
  * ```
  *
- *
  * @returns {MmExtension[]}
  */
 function customClass(): MmExtension[] {
-  return [
-    {
-      type: "output",
-      filter: (text) => {
-        return (
-          text
-            // Add class for list (ol, ul)
-            .replace(
-              /<p>\[\.([a-z0-9A-Z\s]+)\]<\/p>[\n]?<(.+)>/g,
-              `<$2 class="$1">`
-            )
-
-            // Add class for other blocks
-            .replace(/<(.+)>\[\.([a-z0-9A-Z\s]+)\]/g, `<$1 class="$2">`)
-
-            // Prevent class name with 2 dashs being replace by `<em>` tag
-            .replace(/class="(.+)"/g, (str) => {
-              if (str.indexOf("<em>") !== -1) {
-                return str.replace(/<[/]?em>/g, "_");
-              }
-              return str;
-            })
-        );
-      },
-    },
-  ];
+	return [
+		{
+			type: 'output',
+			filter: (text) => {
+				return (
+					text
+						// Add class for list (ol, ul)
+						.replace(
+							/<p>\[\.([a-z0-9A-Z\s]+)\]<\/p>[\n]?<(.+)>/g,
+							`<$2 class="$1">`,
+						)
+						// Add class for other blocks
+						.replace(
+							/<(.+)>\[\.([a-z0-9A-Z\s]+)\]/g,
+							`<$1 class="$2">`,
+						)
+						// Prevent class name with 2 dashs being replace by `<em>` tag
+						.replace(/class="(.+)"/g, (str) => {
+							if (str.indexOf('<em>') !== -1) {
+								return str.replace(/<[/]?em>/g, '_')
+							}
+							return str
+						})
+				)
+			},
+		},
+	]
 }
-registerExtension("customClass", customClass());
+registerExtension('customClass', customClass())
 
-export default customClass;
+export default customClass
