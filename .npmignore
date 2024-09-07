@@ -16,7 +16,7 @@ jsr.json
 pnpm-lock.yaml
 tsconfig.json
 tsup.config.ts
-.notes
+notes
 deno.json
 deno.schema.json
 biome.schema.json

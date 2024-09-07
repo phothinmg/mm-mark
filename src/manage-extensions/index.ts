@@ -1,7 +1,5 @@
 import Showdown, { type ShowdownExtension } from "showdown";
 
-type MmExtension = ShowdownExtension;
-
 /**
  * Register a extension.
  *
@@ -9,11 +7,14 @@ type MmExtension = ShowdownExtension;
  * @param ext - The extension.
  * @throws Throws if `name` is not of type string.
  */
-function registerExtension(
-	name: string,
-	ext: MmExtension | MmExtension[] | (() => MmExtension[] | MmExtension),
+function _registerExtension(
+  name: string,
+  ext:
+    | ShowdownExtension
+    | ShowdownExtension[]
+    | (() => ShowdownExtension[] | ShowdownExtension)
 ): void {
-	Showdown.extension(name, ext);
+  Showdown.extension(name, ext);
 }
 
 /**
@@ -22,8 +23,10 @@ function registerExtension(
  * @param ext - The extension to checks.
  * @returns Returns `true` if the extension is valid showdown extension, otherwise `false`.
  */
-function validateExtension(ext: MmExtension[] | MmExtension): boolean {
-	return Showdown.validateExtension(ext);
+function _validateExtension(
+  ext: ShowdownExtension[] | ShowdownExtension
+): boolean {
+  return Showdown.validateExtension(ext);
 }
 
 /**
@@ -31,13 +34,8 @@ function validateExtension(ext: MmExtension[] | MmExtension): boolean {
  *
  * @returns {void}
  */
-function removeExtensions(): void {
-	Showdown.resetExtensions();
+function _removeExtensions(): void {
+  Showdown.resetExtensions();
 }
 
-export {
-	registerExtension,
-	validateExtension,
-	removeExtensions,
-	type MmExtension,
-};
+export { _registerExtension, _validateExtension, _removeExtensions };

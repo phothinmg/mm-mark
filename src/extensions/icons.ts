@@ -1,15 +1,26 @@
 import {
-  type MmExtension,
   registerExtension,
+  type MmExtension,
 } from "../manage-extensions/index.js";
-
 /**
- * **Font Awesome icons extension for Mmark and Showdown**
+ * **Font Awesome icons extension for Mmmark and Showdown**
  *
  * https://github.com/dbtek/showdown-icon/blob/master/showdown-icon.js
  *
- *
- * @example
+ * 
+ * 
+ * 
+ * Add this link to `<head>` of your HTML.
+ * 
+ * ```html
+ * <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+ * ```
+ * <br>
+ * ---
+ * 
+ * <br>
+ * 
+ * **Example**
  * 
  * ```ts
  * import { mdConverter } from "mm-mark";
@@ -19,7 +30,7 @@ import {
 	extensions: [icons],
 	});
 
-	const md = `@fa-home`;
+	const md = `@fa-home`;// also you can use <i class="fa fa-home"></i>
 	const html = converter.makeHtml(md);
 	console.log(html); // <i class="fa fa-home"></i>
  * ```
@@ -39,8 +50,9 @@ function icons(): MmExtension[] {
        * @param iconName The name of the icon without the `fa-` prefix.
        * @returns The replaced text.
        */
-      replace: (match: string, escaped: string, iconName: string) =>
-        escaped === "\\" ? match : `<i class="fa fa-${iconName}"></i>`,
+      replace: (match: string, escaped: string, iconName: string) => {
+        return escaped === "\\" ? match : `<i class="fa fa-${iconName}"></i>`;
+      },
     },
     {
       type: "output",
@@ -55,18 +67,10 @@ function icons(): MmExtension[] {
        * @returns The filtered text.
        */
       filter: (text: string) => {
-        const scriptTag = `
-            <script>
-            if (!document.querySelector('script[src="https://kit.fontawesome.com/50c925d5df.js"]')) {
-              var script = document.createElement("script");
-              script.src = "https://kit.fontawesome.com/50c925d5df.js";
-              script.integrity = "sha384-WnvjC3a7qACGW44G0spmbF1u7E+79pf/6LDK0JFS0lM6c03E3R7LrO/YBeGBJ1lW";
-              script.crossOrigin = "anonymous";
-              document.head.appendChild(script);
-            }
-            </script>`;
-        text = text.replace(/<p>(<i class="fa fa-[^"]+"><\/i>)<\/p>/g, "$1");
-        return `${text}\n${scriptTag}`;
+        if (text) {
+          text = text.replace(/<p>(<i class="fa fa-[^"]+"><\/i>)<\/p>/g, "$1");
+        }
+        return text;
       },
     },
   ];
