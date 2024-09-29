@@ -1,5 +1,5 @@
 import Showdown from "showdown";
-import { type MmExtension } from "../manage-extensions/index.js";
+
 import {
   type MmmarkConverterOptions,
   type MmmarkUserSelectOptions,
@@ -16,13 +16,15 @@ type MdConverter = {
   ) => Showdown.Converter;
   addExtension(
     extension:
-      | (() => MmExtension[] | MmExtension)
-      | MmExtension[]
-      | MmExtension,
+      | (() => Showdown.ShowdownExtension[] | Showdown.ShowdownExtension)
+      | Showdown.ShowdownExtension[]
+      | Showdown.ShowdownExtension,
     name?: string
   ): void;
   useExtension(extensionName: string): void;
-  removeExtension(extensions: MmExtension[] | MmExtension): void;
+  removeExtension(
+    extensions: Showdown.ShowdownExtension[] | Showdown.ShowdownExtension
+  ): void;
 };
 
 /**
@@ -120,9 +122,9 @@ function mdConverter(options?: MmmarkUserSelectOptions): MdConverter {
    */
   const addExtension = (
     extension:
-      | (() => MmExtension[] | MmExtension)
-      | MmExtension[]
-      | MmExtension,
+      | (() => Showdown.ShowdownExtension[] | Showdown.ShowdownExtension)
+      | Showdown.ShowdownExtension[]
+      | Showdown.ShowdownExtension,
     name?: string
   ): void => {
     try {
@@ -166,7 +168,9 @@ function mdConverter(options?: MmmarkUserSelectOptions): MdConverter {
    * - The [Showdown built-in extensions](https://github.com/showdownjs/showdown/wiki/Extensions)
    * - The [Mmark built-in extensions](https://github.com/ptmdev/mm-mark#extensions)
    */
-  const removeExtension = (extensions: MmExtension[] | MmExtension) => {
+  const removeExtension = (
+    extensions: Showdown.ShowdownExtension[] | Showdown.ShowdownExtension
+  ) => {
     return converter.removeExtension(extensions);
   };
   return {

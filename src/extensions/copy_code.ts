@@ -1,7 +1,5 @@
-import {
-  type MmExtension,
-  registerExtension,
-} from "../manage-extensions/index.js";
+import { ShowdownExtension } from "showdown";
+import { _registerExtension } from "../manage-extensions/index.js";
 
 function addListener(className: string) {
   if (
@@ -29,7 +27,7 @@ function addListener(className: string) {
  *
  * @function
  */
-function copyCode({ className = "copy-code" } = {}): MmExtension[] {
+function copyCode({ className = "copy-code" } = {}): ShowdownExtension[] {
   return [
     {
       type: "output",
@@ -45,5 +43,5 @@ function copyCode({ className = "copy-code" } = {}): MmExtension[] {
   ];
 }
 
-registerExtension("copyCode", copyCode());
+_registerExtension("copyCode", copyCode());
 export default copyCode;

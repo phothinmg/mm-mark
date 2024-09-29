@@ -15,10 +15,6 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     },
-    "./frontmatter": {
-      "types": "./dist/frontmatter/index.d.ts",
-      "import": "./dist/frontmatter/index.js"
-    },
     "./extensions": {
       "types": "./dist/extensions/index.d.ts",
       "import": "./dist/extensions/index.js"
@@ -39,7 +35,6 @@
     "@biomejs/biome": "^1.8.3",
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^20.12.10",
-    "@types/sanitize-html": "^2.13.0",
     "@types/showdown": "^2.0.6",
     "jsr": "^0.12.4",
     "tsup": "^8.0.2",
@@ -48,7 +43,6 @@
   },
   "dependencies": {
     "js-yaml": "^4.1.0",
-    "sanitize-html": "^2.13.0",
     "showdown": "^2.1.0"
   }
 }

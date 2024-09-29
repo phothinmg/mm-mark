@@ -1,7 +1,5 @@
-import {
-  type MmExtension,
-  registerExtension,
-} from "../manage-extensions/index.js";
+import { ShowdownExtension } from "showdown";
+import { _registerExtension } from "../manage-extensions/index.js";
 
 /**
  *
@@ -30,7 +28,7 @@ import {
  * ```
  *
  */
-function customClass(): MmExtension[] {
+function customClass(): ShowdownExtension[] {
   return [
     {
       type: "output",
@@ -58,6 +56,6 @@ function customClass(): MmExtension[] {
     },
   ];
 }
-registerExtension("customClass", customClass());
+_registerExtension("customClass", customClass());
 
 export default customClass;

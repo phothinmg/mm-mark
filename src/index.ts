@@ -1,5 +1,8 @@
 import { FrontMatter, type FrontMatterResult } from "./frontmatter/index.js";
 import Showdown, { type ShowdownExtension } from "showdown";
+import { mdConverter, type MdConverter } from "./converter/index.js";
+import { type MmmarkUserSelectOptions } from "./helper/getalloptions.js";
+
 export type Mmmark = {
   /**
  * **Retrieves the frontmatter data and content from markdown contents.**
@@ -67,6 +70,7 @@ export type Mmmark = {
    * @returns {void}
    */
   removeExtensions(): void;
+  Converter(options?: MmmarkUserSelectOptions): MdConverter;
 };
 
 const mmmark: Mmmark = {
@@ -87,6 +91,9 @@ const mmmark: Mmmark = {
   },
   removeExtensions(): void {
     Showdown.resetExtensions();
+  },
+  Converter(options?: MmmarkUserSelectOptions): MdConverter {
+    return mdConverter(options);
   },
 };
 

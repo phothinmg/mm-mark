@@ -1,7 +1,5 @@
-import {
-  registerExtension,
-  type MmExtension,
-} from "../manage-extensions/index.js";
+import { ShowdownExtension } from "showdown";
+import { _registerExtension } from "../manage-extensions/index.js";
 /**
  * **Font Awesome icons extension for Mmmark and Showdown**
  *
@@ -36,7 +34,7 @@ import {
  * ```
  * 
  */
-function icons(): MmExtension[] {
+function icons(): ShowdownExtension[] {
   return [
     {
       type: "lang",
@@ -76,6 +74,6 @@ function icons(): MmExtension[] {
   ];
 }
 
-registerExtension("icons", icons());
+_registerExtension("icons", icons());
 
 export default icons;
