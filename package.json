@@ -1,6 +1,6 @@
 {
   "name": "mm-mark",
-  "version": "0.3.0",
+  "version": "0.3.6",
   "description": "Markdown and Html Converter",
   "scripts": {
     "check": "biome check --write src ",
@@ -14,10 +14,6 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
-    },
-    "./extensions": {
-      "types": "./dist/extensions/index.d.ts",
-      "import": "./dist/extensions/index.js"
     }
   },
   "author": "Pho Thin Maung",

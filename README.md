@@ -162,7 +162,7 @@ console.log(foo.content); // ## Hello
 
 ```ts
 import mmmark from "mm-mark";
-import { customClass } from "mm-mark/extensions";
+import { customClass } from "mm-mark";
 
 const converter = mmmark.Converter({
   extensions: [icons],
@@ -177,7 +177,7 @@ console.log(html); // <i class="fa fa-home"></i>
 
 ```ts
 import mmmark from "mm-mark";
-import { customClass } from "mm-mark/extensions";
+import { customClass } from "mm-mark";
 
 const converter = mmmark.Converter({
   noHeaderId: true, // recommended to set `true` for option `noHeaderId` when using customClass extension
