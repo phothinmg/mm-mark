@@ -105,7 +105,7 @@ import * as mod from "@ptm/mm-mark";
 ### Markdown to HTML.
 
 ```ts
-import { mdConverter } from "mm-mark";
+import mmmark from "mm-mark";
 const mdcontent = `
 ---
 title: hello world
@@ -119,7 +119,7 @@ tags:
 ## Hello
 
 `;
-const converter = mdConverter(/*{Showdown Options} */);
+const converter = mmmark.Converter(/*{Showdown Options} */);
 // set flavor for this converter
 converter.setFlavor("github");
 const html = converter.makeHtml(mdcontent);
@@ -129,7 +129,7 @@ console.log(html); // <h2 id="hello">Hello</h2>
 ### Frontmatter
 
 ```ts
-import { frontmatter } from "mm-mark/frontmatter";
+import mmmark from "mm-mark";
 type MyType = {
   type: string;
   title: string;
@@ -149,7 +149,7 @@ const mdcontent = `
 
     `;
 
-const foo = frontmatter<MyType>(mdcontent);
+const foo = mmmark.frontmatter<MyType>(mdcontent);
 console.log(foo.data); // { title: 'hello world',  date: 2024-07-07T00:00:00.000Z, tags: [ 'foo', 'bar' ] }
 console.log(foo.content); // ## Hello
 ```
@@ -161,10 +161,10 @@ console.log(foo.content); // ## Hello
 1. `icons`
 
 ```ts
-import { mdConverter } from "mm-mark";
+import mmmark from "mm-mark";
 import { customClass } from "mm-mark/extensions";
 
-const converter = mdConverter({
+const converter = mmmark.Converter({
   extensions: [icons],
 });
 
@@ -176,10 +176,10 @@ console.log(html); // <i class="fa fa-home"></i>
 2. `customClass`
 
 ```ts
-import { mdConverter } from "mm-mark";
+import mmmark from "mm-mark";
 import { customClass } from "mm-mark/extensions";
 
-const converter = mdConverter({
+const converter = mmmark.Converter({
   noHeaderId: true, // recommended to set `true` for option `noHeaderId` when using customClass extension
   extensions: [customClass],
 });
