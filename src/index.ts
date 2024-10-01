@@ -96,5 +96,10 @@ const mmmark: Mmmark = {
     return mdConverter(options);
   },
 };
-
+export type {
+  MmmarkUserSelectOptions,
+  ShowdownExtension,
+  MdConverter,
+  FrontMatterResult,
+};
 export default mmmark;
